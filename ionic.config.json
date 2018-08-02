@@ -1,0 +1,7 @@
+{
+  "name": "ponal-120-informante_virtual-ionic-app",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
