@@ -5,10 +5,7 @@
     </button>
     <ion-title>Inicio</ion-title>
   </ion-navbar>
-</ion-header>
-
-
-  
+</ion-header>  
 
   <ion-content class="cards-bg social-cards">
       <h3 style="text-align: center">Casos Activos</h3>
@@ -30,7 +27,7 @@
       
         <ion-row>
           <ion-col>                      
-           <button ion-button color="policia">Ver</button>
+           <button block ion-button color="policia" (click)="abrirDescription()">Ver</button>
           </ion-col>          
           <ion-col align-self-center text-center>
             <ion-note>              
