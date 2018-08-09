@@ -13,9 +13,8 @@
 
 
 
- 
-
-
+## Informante Virtual Marvel Prototyping https://marvelapp.com/971iei4
+## Informante Virtual Código ionic view 33cb7b43 
 
 
 ## Introducción
