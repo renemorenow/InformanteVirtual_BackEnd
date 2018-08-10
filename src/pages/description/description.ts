@@ -34,7 +34,7 @@ export class DescriptionPage {
     let alert = this.alertCtrl.create({
       title: 'Señor Ciudadano',
       subTitle: 'Recuerde envié la información que considere relevante para el esclarecimiento de los hechos.',
-      buttons: ['Enterado']
+      buttons: ['Enterado(a)']
     });
     alert.present();
   }
