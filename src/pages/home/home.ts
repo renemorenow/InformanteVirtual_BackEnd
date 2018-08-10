@@ -8,11 +8,11 @@ import { DescriptionPage } from '../description/description';
 })
 
 export class HomePage {
-   
-  constructor(public navCtrl: NavController) { 
-    
+
+  constructor(public navCtrl: NavController) {
+
   }
   abrirDescription() {
-    this.navCtrl.push("DescriptionPage");    
-   }  
+    this.navCtrl.push(DescriptionPage);
+   }
 }
