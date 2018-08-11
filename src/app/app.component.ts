@@ -5,10 +5,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { DescriptionPage } from '../pages/description/description';
 
-
-import { timer } from 'rxjs/observable/timer'
+import { timer } from 'rxjs/observable/timer';
 import { flatten } from '../../node_modules/@angular/compiler';
+
+
 
 @Component({
   templateUrl: 'app.html'
@@ -38,12 +40,14 @@ export class MyApp {
   }
 
   initializeApp() {
+    debugger;
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
-      //this.splashScreen.hide();
-      //timer (1000).subscribe(()=> this.showSplash = false)
+      this.splashScreen.hide();
+      timer (1000).subscribe(()=> this.showSplash = false);
+      debugger;      
     });
   }
 
