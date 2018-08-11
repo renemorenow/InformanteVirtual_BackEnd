@@ -11,6 +11,12 @@
 - **RAFAEL ANTONIO CAMARGO DIAZ** 
 >Ingeniero de sistemas, experiencia en desarrollo de sistemas de información en Tecnología Visual Basic .Net y desarrollo sobre base de datos Oracle PLsql.
 
+
+
+## Informante Virtual Marvel Prototyping https://marvelapp.com/971iei4
+## Informante Virtual Código ionic view 33cb7b43 
+
+
 ## Introducción
 
 ##### Planteamiento del Problema
