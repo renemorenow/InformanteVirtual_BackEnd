@@ -103,7 +103,7 @@
             <img src="assets/imgs/logo_inf_virtual.png">
           </ion-avatar>
           <h2>{{caso.TITLE}}</h2>
-          <p>{{caso.CRIME_DATE}}</p>
+          <p>{{caso.CRIME_DATE.split('T')[0]}}</p>
         </ion-item>
       
         <img src="assets/imgs/fleteo1.jpg">
@@ -114,7 +114,7 @@
       
         <ion-row>
           <ion-col>                      
-           <button block ion-button color="policia" (click)="abrirDescription()">Ver</button>
+           <button block ion-button color="policia" (click)="abrirDescription(caso.INVESTIGATION_ID)">Ver</button>
           </ion-col>          
           <ion-col align-self-center text-center>
             <ion-note>              
