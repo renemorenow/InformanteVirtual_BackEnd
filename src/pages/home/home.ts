@@ -10,13 +10,19 @@ import { Subscriber } from '../../../node_modules/rxjs/Subscriber';
 })
 
 export class HomePage {
-casos
+  casos
+  idCaso
   constructor(public navCtrl: NavController, public provedor:PlistarcasosProvider) {
 
   }
-  abrirDescription() {
-    this.navCtrl.push(DescriptionPage);
+  abrirDescription(id) {
+    console.log('abrirDescription: ' + id);
+    this.navCtrl.push(DescriptionPage, {
+      idCaso: id,
+    });
   }
+
+
 
   ionViewDidLoad(){
     this.provedor.obtenerdatos( )
