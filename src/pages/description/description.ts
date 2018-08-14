@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { mobiscroll } from '@mobiscroll/angular';
 import { AlertController } from 'ionic-angular';
 import { PlistarcasosProvider } from '../../providers/plistarcasos/plistarcasos';
+import { ContributionsPage } from '../contributions/contributions';
 
 @IonicPage()
 @Component({
@@ -31,19 +32,12 @@ export class DescriptionPage {
     //console.log('ionViewDidLoad: ' + this.investigation);
   }
 
-  showAlert() {
-    debugger;
-    mobiscroll.alert({
-        title: 'Señor Ciudadano',
-        message: '"Recuerde"envié la información que considere relevante para el esclarecimiento de los hechos.',
-        callback: function () {
-            mobiscroll.toast({
-                message: 'Alert closed'
-            });
-        }
+  abrirAportes() {
+    this.navCtrl.push(ContributionsPage, {
+      idCaso: this.idCaso,
     });
-  } 
-  
+  }
+
   presentAlert() {
     let alert = this.alertCtrl.create({
       title: 'Señor Ciudadano',
