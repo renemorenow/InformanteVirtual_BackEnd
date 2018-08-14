@@ -96,6 +96,36 @@
       
       </ion-card>
             
-  </ion-content>
+      <ion-card ion-item *ngFor="let caso of casos">
+      
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="assets/imgs/logo_inf_virtual.png">
+          </ion-avatar>
+          <h2>{{caso.TITLE}}</h2>
+          <p>{{caso.CRIME_DATE}}</p>
+        </ion-item>
+      
+        <img src="assets/imgs/fleteo1.jpg">
+      
+        <ion-card-content>
+          <p>{{caso.DESCRIPTION}}</p>
+        </ion-card-content>
+      
+        <ion-row>
+          <ion-col>                      
+           <button block ion-button color="policia" (click)="abrirDescription()">Ver</button>
+          </ion-col>          
+          <ion-col align-self-center text-center>
+            <ion-note>              
+              11h ago
+            </ion-note>
+          </ion-col>
+        </ion-row>
+      
+      </ion-card>
+ 
+ 
+    </ion-content>
       
     
