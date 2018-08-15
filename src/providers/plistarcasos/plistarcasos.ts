@@ -16,7 +16,12 @@ export class PlistarcasosProvider {
   }
 
     obtenerdatos(){
-      return this.http.get('https://apiadenunciarrnmc.policia.gov.co/wsInformante/api/Investigations');
+      return this.http.get('https://apiadenunciarrnmc.policia.gov.co/wsInformante/api/InvestigationsWithFile');
+    }
+
+    GetInvestigation(Id:number){
+      console.log('GetInvestigation: ' + Id);
+      return this.http.get('https://apiadenunciarrnmc.policia.gov.co/wsInformante/api/Investigations/' + Id);
     }
 
   }

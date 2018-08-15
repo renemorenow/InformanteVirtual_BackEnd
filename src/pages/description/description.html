@@ -8,32 +8,33 @@
 </ion-header>
 
 <ion-content class="cards-bg social-cards">
-    <ion-card>
-      
+    <ion-card ion-item *ngIf="investigation">
+
         <ion-item>
           <ion-avatar item-start>
             <img src="assets/imgs/logo_inf_virtual.png">
           </ion-avatar>
-          <h2>Fleteo Villa Alsacia</h2>
-          <p>Septiembre 17, 2016</p>
+          <h2>{{investigation.TITLE}}</h2>
+          <p>{{investigation.CRIME_DATE.split('T')[0]}}</p>
         </ion-item>
       
-        <ion-slides loop="true" style="background-color: rgb(250, 250, 250)">
-            <ion-slide *ngFor="let image of [1,2,3]">
-              <img data-src="./assets/imgs/slide{{image}}.jpg">
-            </ion-slide>
-          </ion-slides>
+        <img src="assets/imgs/fleteo1.jpg">
       
         <ion-card-content>
-          <p>Dos hombres que se desplazaban en una moto le dispararon a Yeison Méndez, un joven de 26 años de edad, para robarle un dinero que le habían acabado de pagar producto de una negociación, hechos ocurridos en el barrio villa alsacía.</p>
-          <p>Varios videos de seguridad captaron el caso de fleteo en el que fue asesinado Jeison Efraín Méndez. En las imágenes se aprecia la forma en que el parrillero de una moto desciende del vehículo y se dirige hacia el carro de la víctima, a quien dispara después de un forcejeo de unos 20 segundos.</p>
+          <p>{{investigation.DESCRIPTION}}</p>
         </ion-card-content>
       
         <ion-row>
           <ion-col>                      
-           <button ion-button color="policia" (click)="presentAlert()"><div> <ion-icon name='md-add-circle'></ion-icon> &nbsp; <label>Aportar Información</label> </div></button>
+           <button block ion-button color="policia" (click)="abrirDescription()">Ver</button>
           </ion-col>          
+          <ion-col align-self-center text-center>
+            <ion-note>              
+              11h ago
+            </ion-note>
+          </ion-col>
         </ion-row>
       
       </ion-card>
+     
 </ion-content>
