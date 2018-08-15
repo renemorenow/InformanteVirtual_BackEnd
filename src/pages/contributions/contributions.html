@@ -43,11 +43,12 @@
     <br/>
     <br/>
 
-    <button block ion-button color="policia" [disabled]="!this.datos.valid" (click)="addContribution(5, txtDescription.value, txtFirstName.value, txtLastName.value, txtEmail.value, txtPhoneNumber.value);">
+    <button block ion-button color="policia" (click)="addContribution(txtDescription.value, txtFirstName.value, txtLastName.value, txtEmail.value, txtPhoneNumber.value);">
       Enviar
     </button>
 
 </ion-content>
+
 
 <style>
   ion-toolbar {

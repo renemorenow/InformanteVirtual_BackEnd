@@ -19,6 +19,10 @@
         </ion-item>
       
         <img src="assets/imgs/fleteo1.jpg">
+        <ion-card ion-item *ngIf="investigationFiles">
+          <img src="data:image/jpg;base64,{{investigationFiles.FILE_DOC}}">
+        </ion-card>
+        
         <!-- <img src="data:image/jpg;base64,{{investigation.foto}}"> -->
         <ion-card-content>
           <p>{{investigation.DESCRIPTION}}</p>
