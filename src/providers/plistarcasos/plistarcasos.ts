@@ -13,7 +13,8 @@ export class PlistarcasosProvider {
 
   constructor(public http: HttpClient) {
     //console.log('Hello PlistarcasosProvider Provider');
-    this.urlBaseService = 'https://apiadenunciarrnmc.policia.gov.co/wsInformante';
+    //this.urlBaseService = 'https://apiadenunciarrnmc.policia.gov.co/wsInformante';
+    this.urlBaseService = 'https://catalogoservicioweb.policia.gov.co/wsInformante';
   }
 
   obtenerdatos() {
@@ -34,19 +35,15 @@ export class PlistarcasosProvider {
       Accept: "application/json"
     };
 
-    try {
-      this.http.post(url, obj).subscribe(
-        data => {
-          alert("Sus aportes fueron guardados satisfactoriamente");
-          console.log("resultado: " + JSON.stringify(data));
-        },
-        error => {
-          console.log(JSON.stringify(error.json()));
-        }
-      );
-    } catch (error) {
-      console.error(error);
-    }
+    this.http.post(url, obj).subscribe(
+      data => {
+        alert("Sus aportes fueron guardados satisfactoriamente");
+        console.log("resultado: " + JSON.stringify(data));
+      },
+      error => {
+        console.log(JSON.stringify(error.json()));
+      }
+    );
   }
 
   PostAddInformants(obj: any) {

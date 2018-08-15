@@ -38,7 +38,7 @@ export class ContributionsPage {
   }
 
   addContribution(txtDescription: string, txtFirstName: string, txtLastName: string, txtEmail: string, txtPhoneNumber: string){
-    if (txtFirstName != null) {
+    if (txtFirstName != "") {
       var _addInformants = this.addInformants(txtFirstName, txtLastName, txtEmail, txtPhoneNumber);
     }
     let obj: Object  = {
@@ -50,10 +50,6 @@ export class ContributionsPage {
 
     debugger;
     var resultado = this.provider.PostAddContributions(obj);
-
-    if (resultado != null) {
-      
-    }
     
   }
 
