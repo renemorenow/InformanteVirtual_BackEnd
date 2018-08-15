@@ -16,6 +16,7 @@ export class DescriptionPage {
   //};
   idCaso
   investigation
+  investigationFiles
   
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, public provedor:PlistarcasosProvider) {    
@@ -30,6 +31,12 @@ export class DescriptionPage {
       (error)=>{console.log(error);}
     )
     //console.log('ionViewDidLoad: ' + this.investigation);
+    debugger;
+    this.provedor.GetRowInvestigationFile(this.idCaso)
+    .subscribe(
+      (data)=>{this.investigationFiles=data;},
+      (error)=>{console.log(error);}
+    )
   }
 
   abrirAportes() {
