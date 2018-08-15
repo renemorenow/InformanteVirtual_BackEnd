@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-
-/**
- * Generated class for the ContributionsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { PlistarcasosProvider } from '../../providers/plistarcasos/plistarcasos';
 
 @IonicPage()
 @Component({
@@ -14,8 +8,11 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
   templateUrl: 'contributions.html',
 })
 export class ContributionsPage {
+  resultContribution;
+  resultContributionFile;
+  objContrib: any[] = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, public provider: PlistarcasosProvider) {
   }
 
   ionViewDidLoad() {
@@ -29,6 +26,30 @@ export class ContributionsPage {
       buttons: ['Enterado(a)']
     });
     alert.present();
-  }  
+  }
 
+  addContribution(id: string, txtDescription: string, txtFirstName: string, txtLastName: string, txtEmail: string, txtPhoneNumber: string){    
+    let obj: Object  = {
+    CONTRIBUTION_ID: 0,
+    INVESTIGATION_ID: id,
+    DESCRIPTION: txtDescription,
+    INFORMANT_ID: 1
+    }
+
+    debugger;
+    var resultado = this.provider.PostAddContributions(obj);
+    
+  }
+
+  addContributionsFile(id: string, strArchivo: string){
+    let obj: Object  = {
+    CONTRIBUTION_FILE_ID: 0,
+    CONTRIBUTION_ID: id,
+    PATH: 'Documents',
+    CONTENT_TYPE: 'image/jpeg',
+    FILE_DOC: strArchivo
+    }
+    debugger;
+    var resultado = this.provider.PostAddContributionFile(obj);
+  }
 }

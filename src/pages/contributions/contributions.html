@@ -1,94 +1,57 @@
 <ion-header>
-    <ion-navbar>
-      <ion-title>Aportes al Caso</ion-title>
-    </ion-navbar>
-  </ion-header>
-  
-  <ion-content id="content" fullscreen>
-      <ion-list>
-        <ion-item>
-          <ion-textarea placeholder="Describa la información aportada" style="display:block;width:auto;height:90%;"></ion-textarea>
-        </ion-item>
+  <ion-navbar>
+    <ion-title>Aportes al Caso</ion-title>
+  </ion-navbar>
+</ion-header>
 
-        <ion-item>
-          <ion-label>Default Label</ion-label>
-          <ion-input value="reallylonglonglonginputtoseetheedgesreallylonglonglonginputtoseetheedges"></ion-input>
-        </ion-item>
+<ion-content id="content" fullscreen>
+  <ion-list>
+    <ion-item>
+      <ion-label>Información:*</ion-label>
+      <ion-textarea #txtDescription id='txtDescription' name="txtDescription" style="border:black; border-width: 1px;" placeholder="Describa la información que desea aportar"></ion-textarea>
+    </ion-item>
 
-        <ion-item>
-          <ion-label>Clear Input</ion-label>
-          <ion-input clear-input value="reallylonglonglonginputtoseetheedgesreallylonglonglonginputtoseetheedges"></ion-input>
-        </ion-item>
+    <ion-item>
+      <ion-label>Nombres:</ion-label>
+      <ion-input #txtFirstName id="txtFirstName" name="txtFirstName" placeholder="Nombres"></ion-input>
+    </ion-item>
 
-        <ion-item>
-          <ion-label position="floating">Floating</ion-label>
-          <ion-input checked></ion-input>
-        </ion-item>
+    <ion-item>
+      <ion-label>Apellidos:</ion-label>
+      <ion-input #txtLastName id="txtLastName" name="txtLastName" clear-input placeholder="Apellidos"></ion-input>
+    </ion-item>
 
-        <ion-item>
-          <ion-label position="fixed">Type #</ion-label>
-          <ion-input type="number" value="333"></ion-input>
-        </ion-item>
+    <ion-item>
+      <ion-label>Correo electrónico:</ion-label>
+      <ion-input #txtEmail id="txtEmail" name="txtEmail" clear-input placeholder="Correo electrónico"></ion-input>
+    </ion-item>
 
-        <ion-item>
-          <ion-label position="stacked">Password</ion-label>
-          <ion-input type="password"></ion-input>
-        </ion-item>
+    <ion-item>
+      <ion-label>Número telefónico:</ion-label>
+      <ion-input #txtPhoneNumber id="txtPhoneNumber" name="txtPhoneNumber" clear-input placeholder="Telefóno"></ion-input>
+    </ion-item>
 
-        <ion-item>
-          <ion-label position="stacked">Placeholder</ion-label>
-          <ion-input placeholder="Enter Something"></ion-input>
-        </ion-item>
+  </ion-list>
+  <br/>
+  <br/>
 
-        <ion-item>
-          <ion-label>Disabled</ion-label>
-          <ion-input id="dynamicDisabled" value="Disabled" disabled></ion-input>
-        </ion-item>
+  <button block ion-button color="policia" (click)="addContribution(5, txtDescription.value, txtFirstName.value, txtLastName.value, txtEmail.value, txtPhoneNumber.value);">
+    Enviar
+  </button>
 
-        <ion-item>
-          <ion-label>Readonly</ion-label>
-          <ion-input id="dynamicReadonly" value="Readonly" readonly></ion-input>
-        </ion-item>
+</ion-content>
 
-        <ion-item>
-          <ion-label>Slot</ion-label>
-          <ion-input slot="start" value="Start"></ion-input>
-        </ion-item>
+<style>
+  ion-toolbar {
+    --background: white;
+  }
+</style>
 
-        <ion-item>
-          <ion-label>Toggle</ion-label>
-          <ion-toggle checked slot="end"></ion-toggle>
-        </ion-item>
-
-        <ion-item>
-          <ion-label position="fixed">Type #</ion-label>
-          <div type="number" value="333" class="input input-md hydrated">
-            <!---->
-            <input aria-disabled="false" autocapitalize="none" autocomplete="off" autocorrect="off" autofocus="false" class="native-input native-input-md"
-              spellcheck="false" type="number">
-            
-          </div>
-        </ion-item>
-      </ion-list>
-
-      <ion-item>
-        <ion-label>Clear Input</ion-label>
-        <ion-input clear-input value="reallylonglonglonginputtoseetheedgesreallylonglonglonginputtoseetheedges"></ion-input>
-      </ion-item>
-
-    </ion-content>
-
-    <style>
-      ion-toolbar {
-        --background: white;
-      }
-    </style>
-
-    <script>
-      function toggleBoolean(id, prop) {
-        var el = document.getElementById(id);
-        var isTrue = el[prop] ? false : true;
-        el[prop] = isTrue;
-        console.log('in toggleBoolean, setting', prop, 'to', isTrue);
-      }
-    </script>
+<script>
+  function toggleBoolean(id, prop) {
+    var el = document.getElementById(id);
+    var isTrue = el[prop] ? false : true;
+    el[prop] = isTrue;
+    console.log('in toggleBoolean, setting', prop, 'to', isTrue);
+  }
+</script>
