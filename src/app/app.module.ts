@@ -15,6 +15,9 @@ import { PlistarcasosProvider } from '../providers/plistarcasos/plistarcasos';
 //import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 
+//Plugins
+import { ImagePicker } from '@ionic-native/image-picker';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -41,6 +44,7 @@ import { HttpClientModule } from '@angular/common/http';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     PlistarcasosProvider,
+    ImagePicker,
    
   ]
 })
