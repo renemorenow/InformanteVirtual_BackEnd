@@ -13,8 +13,8 @@ export class PlistarcasosProvider {
 
   constructor(public http: HttpClient) {
     //console.log('Hello PlistarcasosProvider Provider');
-    //this.urlBaseService = 'https://apiadenunciarrnmc.policia.gov.co/wsInformante';
-    this.urlBaseService = 'https://catalogoservicioweb.policia.gov.co/wsInformante';
+    this.urlBaseService = 'https://apiadenunciarrnmc.policia.gov.co/wsInformante';
+    //this.urlBaseService = 'https://catalogoservicioweb.policia.gov.co/wsInformante';
   }
 
   obtenerdatos() {
