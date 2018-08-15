@@ -38,11 +38,11 @@ export class PlistarcasosProvider {
     this.http.post(url, obj).subscribe(
       data => {
         alert("Sus aportes fueron guardados satisfactoriamente");
-        console.log("resultado: " + JSON.stringify(data));
-      },
+        console.log("resultado Contributions: " + JSON.stringify(data));
+      }/*,
       error => {
         console.log(JSON.stringify(error.json()));
-      }
+      }*/
     );
   }
 
@@ -59,11 +59,11 @@ export class PlistarcasosProvider {
         data => {
           console.log("PostAddInformants OK");
           console.log("resultado: " + JSON.stringify(data));
-        },
+        }/*,
         error => {
           console.log("PostAddInformants Error");
           console.log(JSON.stringify(error.json()));
-        }
+        }*/
       );
     } catch (error) {
       console.error(error);
