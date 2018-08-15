@@ -23,7 +23,7 @@ export class DescriptionPage {
   }
 
   ionViewDidLoad(){    
-    console.log('ionViewDidLoad: ' + this.idCaso);
+    //console.log('ionViewDidLoad: ' + this.idCaso);
     this.provedor.GetInvestigation(this.idCaso)
     .subscribe(
       (data)=>{this.investigation=data;},
