@@ -14,7 +14,11 @@ export class ContributionsPage {
   resultContributionFile;
   objContrib: any[] = [];
   datos: any ={};
+  idCaso
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, public provider: PlistarcasosProvider, private formBuilder: FormBuilder, private imagePicker: ImagePicker) {
+    this.idCaso = navParams.get("idCaso");
+    console.log("this.idCaso: " + this.idCaso);
     this.datos = this.formBuilder.group({
       informacion:['', Validators.required]
     });
@@ -33,16 +37,23 @@ export class ContributionsPage {
     alert.present();
   }
 
-  addContribution(id: string, txtDescription: string, txtFirstName: string, txtLastName: string, txtEmail: string, txtPhoneNumber: string){    
+  addContribution(txtDescription: string, txtFirstName: string, txtLastName: string, txtEmail: string, txtPhoneNumber: string){
+    if (txtFirstName != null) {
+      var _addInformants = this.addInformants(txtFirstName, txtLastName, txtEmail, txtPhoneNumber);
+    }
     let obj: Object  = {
     CONTRIBUTION_ID: 0,
-    INVESTIGATION_ID: id,
+    INVESTIGATION_ID: this.idCaso,
     DESCRIPTION: txtDescription,
     INFORMANT_ID: 1
     }
 
     debugger;
     var resultado = this.provider.PostAddContributions(obj);
+
+    if (resultado != null) {
+      
+    }
     
   }
 
@@ -56,6 +67,19 @@ export class ContributionsPage {
     }
     debugger;
     var resultado = this.provider.PostAddContributionFile(obj);
+  }
+
+  addInformants(txtFirstName: string, txtLastName: string, txtEmail: string, txtPhoneNumber: string){
+    let obj: Object  = {
+      INFORMANT_ID: 0,
+      FIRST_NAME: txtFirstName,
+      LAST_NAME: txtLastName,
+      EMAIL: txtEmail,
+      PHONE_NUMBER: txtPhoneNumber
+    }
+    debugger;
+    var resultado = this.provider.PostAddInformants(obj);
+    return resultado;
   }
 
   abrirGaleria(){
