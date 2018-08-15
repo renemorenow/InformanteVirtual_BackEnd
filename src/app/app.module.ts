@@ -6,7 +6,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { DescriptionPage } from '../pages/description/description';
-
+import { ContributionsPage } from '../pages/contributions/contributions';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -20,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     MyApp,
     HomePage,
     ListPage,
-    DescriptionPage
+    DescriptionPage,
+    ContributionsPage
   ],
   imports: [
     BrowserModule,
@@ -32,7 +33,8 @@ import { HttpClientModule } from '@angular/common/http';
     MyApp,
     HomePage,
     ListPage,
-    DescriptionPage
+    DescriptionPage,
+    ContributionsPage
   ],
   providers: [
     StatusBar,
