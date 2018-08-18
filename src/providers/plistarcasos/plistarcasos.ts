@@ -39,10 +39,10 @@ export class PlistarcasosProvider {
       data => {
         alert("Sus aportes fueron guardados satisfactoriamente");
         console.log("resultado Contributions: " + JSON.stringify(data));
-      }/*,
+      },
       error => {
         console.log(JSON.stringify(error.json()));
-      }*/
+      }
     );
   }
 
