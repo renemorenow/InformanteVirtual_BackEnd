@@ -7,15 +7,19 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-item>
-        <p>{{imageURI}}</p>
-        <button ion-button color="secondary" (click)="getImage()">Capturar Imagen</button>
-      </ion-item>
-      <ion-item>
-        <h4>Image Preview</h4>
-        <img src="{{imageFileName}}" *ngIf="imageFileName" alt="Ionic File" width="300" />
-      </ion-item>
-      <ion-item>
-        <button ion-button (click)="uploadFile()">Adjuntar Archivo</button>
-      </ion-item>
+  <ion-item>
+    <p>{{imageURI}}</p>
+    <button ion-button color="secondary" (click)="getImage()">Capturar Imagen</button>
+  </ion-item>
+  <ion-item>
+    <h4>Image Preview</h4>
+    <img src="{{imageFileName}}" *ngIf="imageFileName" alt="Ionic File" width="300" />
+  </ion-item>
+  <ion-item>
+    <button ion-button (click)="uploadFile()">Adjuntar Archivo</button>
+  </ion-item>
+  <button ion-button (click)="takePhoto()" full color="primary">Take Photo</button>
+  <button ion-button (click)="getImageTestCamera()" full color="secondary">Get Photo From Library</button>
+  <button ion-button (click)="cropImage()" full color="danger">Crop Image</button>
+  <button ion-button (click)="uploadImage()" full color="dark">Upload Image</button>
 </ion-content>
