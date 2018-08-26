@@ -20,6 +20,12 @@ import { HttpClientModule } from '@angular/common/http';
 //Plugins
 import { ImagePicker } from '@ionic-native/image-picker';
 
+//Sample Upload
+import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
+import { Camera } from '@ionic-native/camera';
+import { UploadfilePage } from '../pages/uploadfile/uploadfile';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -27,7 +33,8 @@ import { ImagePicker } from '@ionic-native/image-picker';
     ListPage,
     DescriptionPage,
     ContributionsPage,
-    DetailsPage
+    DetailsPage,
+    UploadfilePage
   ],
   imports: [
     BrowserModule,
@@ -41,7 +48,8 @@ import { ImagePicker } from '@ionic-native/image-picker';
     ListPage,
     DescriptionPage,
     ContributionsPage,
-    DetailsPage
+    DetailsPage,
+    UploadfilePage
   ],
   providers: [
     StatusBar,
@@ -49,6 +57,10 @@ import { ImagePicker } from '@ionic-native/image-picker';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     PlistarcasosProvider,
     ImagePicker,
+    FileTransfer,
+    FileTransferObject,
+    File,
+    Camera
    
   ]
 })

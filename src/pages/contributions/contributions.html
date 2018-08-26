@@ -39,8 +39,14 @@
           Añadir Imagenes
         </button>
       </ion-item>
+
     </ion-list>
     <br/>
+    <ion-row>
+        <ion-col align-self-center text-center>
+         <button block ion-button color="policia" (click)="abrirFileUploadPage()">Adjuntar Archivos</button>
+        </ion-col>
+      </ion-row>
     <br/>
 
     <button block ion-button color="policia" (click)="addContribution(txtDescription.value, txtFirstName.value, txtLastName.value, txtEmail.value, txtPhoneNumber.value);">

@@ -1,8 +1,14 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController, ToastController } from 'ionic-angular';
 import { PlistarcasosProvider } from '../../providers/plistarcasos/plistarcasos';
 import { FormGroup,FormBuilder, Validators } from '../../../node_modules/@angular/forms';
 import { ImagePicker, ImagePickerOptions } from '@ionic-native/image-picker';
+
+//Sample
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { Camera, CameraOptions } from '@ionic-native/camera';
+
+import { UploadfilePage } from '../uploadfile/uploadfile';
 
 @IonicPage()
 @Component({
@@ -14,14 +20,14 @@ export class ContributionsPage {
   resultContributionFile;
   objContrib: any[] = [];
   datos: any ={};
-  idCaso
-
+  idCaso;
+  
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, public provider: PlistarcasosProvider, private formBuilder: FormBuilder, private imagePicker: ImagePicker) {
-    this.idCaso = navParams.get("idCaso");
-    console.log("this.idCaso: " + this.idCaso);
-    this.datos = this.formBuilder.group({
-      informacion:['', Validators.required]
-    });
+      this.idCaso = navParams.get("idCaso");
+      //console.log("this.idCaso: " + this.idCaso);
+      this.datos = this.formBuilder.group({
+        informacion:['', Validators.required]
+      });
   }
 
   ionViewDidLoad() {
@@ -94,4 +100,14 @@ export class ContributionsPage {
       }
     }, (err) => { });
   }
+
+  //Sample from: https://www.djamware.com/post/599da16580aca768e4d2b130/how-to-upload-file-on-ionic-3-using-native-file-transfer-plugin
+  // https://github.com/didinj/ionic3-cordova-upload-file
+  
+  abrirFileUploadPage() {
+    this.navCtrl.push(UploadfilePage, {
+      idCaso: this.idCaso,
+    });
+  }
+  //end sample
 }
