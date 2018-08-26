@@ -19,16 +19,16 @@ export class HomePage {
 
   }
   ionViewDidLoad(){
-    /* this.provedor.GetInvestigationsWithFile( )
+    this.provedor.GetInvestigationsWithFile( )
     .subscribe(
       (data)=>{this.casos=data;},
       (error)=>{console.log(error);}
-    ) */
-    this.provedor.GetInvestigations( )
+    )
+    /* this.provedor.GetInvestigations( )
     .subscribe(
       (data)=>{this.casos=data;},
       (error)=>{console.log(error);}
-    )  
+    )  */ 
   }
   abrirDescription(id) {
     /* console.log('abrirDescription: ' + id);

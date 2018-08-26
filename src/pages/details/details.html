@@ -21,7 +21,7 @@
     </ion-item>
   
     <!-- <img src="data:image/png;base64,{{investigation.File_Doc}}"> -->
-    <ion-slides *ngIf="investigationFiles" id="slide1" loop="true" speed="2000" autoplay="3000" >
+    <ion-slides *ngIf="investigationFiles" id="slide1" loop="true" speed="1500" autoplay="2000" >
       <ion-slide *ngFor="let slide of investigationFiles" >
         <img src="data:image/png;base64,{{slide.FILE_DOC}}" />
       </ion-slide>
