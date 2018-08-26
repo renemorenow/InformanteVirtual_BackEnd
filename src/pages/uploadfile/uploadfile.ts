@@ -181,6 +181,7 @@ export class UploadfilePage {
         loader.dismiss();
       }); */
       this.addContributionsFile(this.idCaso);
+      loader.dismiss();
   }
   //End SAMPLE TestCamera:
 
@@ -190,7 +191,7 @@ export class UploadfilePage {
       Contribution_Id: 2,
       Path: 'Documents',
       Content_Type: 'image/jpeg',
-      File_Doc: this.imageURI
+      File_Doc: this.myphoto
     }
     //debugger;
     var resultado = this.provedor.PostAddContributionFile(obj);

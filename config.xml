@@ -98,7 +98,7 @@
         <variable name="ACCOUNT_TYPE" value="$PACKAGE_NAME.account" />
         <variable name="CONTENT_AUTHORITY" value="$PACKAGE_NAME" />
     </plugin>
+    <plugin name="cordova-plugin-file" spec="^6.0.1" />
     <engine name="ios" spec="4.5.5" />
     <engine name="android" spec="7.0.0" />
-    <plugin name="cordova-plugin-file" spec="^6.0.1" />
 </widget>
