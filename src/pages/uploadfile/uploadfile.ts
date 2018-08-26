@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, LoadingController, ToastController, NavParams } from 'ionic-angular';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { PlistarcasosProvider } from '../../providers/plistarcasos/plistarcasos';
+import { File } from '@ionic-native/file';
 
 @Component({
   selector: 'page-uploadfile',
@@ -19,9 +21,10 @@ export class UploadfilePage {
     private camera: Camera,
     public loadingCtrl: LoadingController,
     public toastCtrl: ToastController,
-    public navParams: NavParams) {
+    public navParams: NavParams,
+    public provedor:PlistarcasosProvider) {
       this.idCaso = navParams.get("idCaso");
-      console.log(this.idCaso);
+      //console.log(this.idCaso);
     }
 
   getImage() {
@@ -165,4 +168,15 @@ export class UploadfilePage {
   }
   //End SAMPLE TestCamera:
 
+  addContributionsFile(id: string, strArchivo: string){
+    let obj: Object  = {
+      Contribution_File_Id: 0,
+      Contribution_Id: id,
+      Path: 'Documents',
+      Content_Type: 'image/jpeg',
+      File_Doc: strArchivo
+    }
+    debugger;
+    var resultado = this.provedor.PostAddContributionFile(obj);
+  }
 }
