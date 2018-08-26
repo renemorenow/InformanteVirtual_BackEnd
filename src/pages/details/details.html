@@ -10,17 +10,16 @@
 </ion-header>
 
 <ion-content class="cards-bg social-cards" *ngIf="investigation">
-<ion-card ion-item>
+<ion-card ion-item *ngIf="investigation">
 
     <ion-item>
-      <ion-avatar item-start>
+      <!-- <ion-avatar item-start>
         <img src="assets/imgs/logo_inf_virtual.png">
-      </ion-avatar>
-      <h2>{{investigation.TITLE}}</h2>
+      </ion-avatar> -->
+      <h2 style="font-weight: bold;">{{investigation.Title}}</h2>
       <p>{{investigation.Crime_Date.split('T')[0]}}</p>
     </ion-item>
   
-    <!-- <img src="data:image/png;base64,{{investigation.File_Doc}}"> -->
     <ion-slides *ngIf="investigationFiles" id="slide1" loop="true" speed="1500" autoplay="2000" >
       <ion-slide *ngFor="let slide of investigationFiles" >
         <img src="data:image/png;base64,{{slide.FILE_DOC}}" />
@@ -28,7 +27,7 @@
     </ion-slides>
     
     <ion-row>
-      <ion-col align-self-center text-center>                      
+      <ion-col align-self-center text-center>
        <button block ion-button color="policia" (click)="abrirAportes()">Aportar Información</button>
       </ion-col>
     </ion-row>
