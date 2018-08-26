@@ -8,6 +8,8 @@ import { ListPage } from '../pages/list/list';
 import { DescriptionPage } from '../pages/description/description';
 import { ContributionsPage } from '../pages/contributions/contributions';
 
+//Details
+import { DetailsPage } from '../pages/details/details';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -24,7 +26,8 @@ import { ImagePicker } from '@ionic-native/image-picker';
     HomePage,
     ListPage,
     DescriptionPage,
-    ContributionsPage
+    ContributionsPage,
+    DetailsPage
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,8 @@ import { ImagePicker } from '@ionic-native/image-picker';
     HomePage,
     ListPage,
     DescriptionPage,
-    ContributionsPage
+    ContributionsPage,
+    DetailsPage
   ],
   providers: [
     StatusBar,

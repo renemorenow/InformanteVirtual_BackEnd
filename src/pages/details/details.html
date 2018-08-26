@@ -1,0 +1,42 @@
+<ion-header>
+
+  <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Descripción de la Investigación</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content class="cards-bg social-cards" *ngIf="investigation">
+<ion-card ion-item>
+
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="assets/imgs/logo_inf_virtual.png">
+      </ion-avatar>
+      <h2>{{investigation.TITLE}}</h2>
+      <p>{{investigation.Crime_Date.split('T')[0]}}</p>
+    </ion-item>
+  
+    <!-- <img src="data:image/png;base64,{{investigation.File_Doc}}"> -->
+    <ion-slides *ngIf="investigationFiles" id="slide1" loop="true" speed="2000" autoplay="3000" >
+      <ion-slide *ngFor="let slide of investigationFiles" >
+        <img src="data:image/png;base64,{{slide.FILE_DOC}}" />
+      </ion-slide>
+    </ion-slides>
+    
+    <ion-row>
+      <ion-col align-self-center text-center>                      
+       <button block ion-button color="policia" (click)="abrirAportes()">Aportar Información</button>
+      </ion-col>
+    </ion-row>
+  
+  </ion-card>
+
+  <div style="margin-left:5%; margin-right: 5%; text-justify:auto; text-align: justify;"><p>Fecha de los hechos: {{investigation.Crime_Date.split('T')[0]}}</p>
+  <ion-label>Descripción de los Hechos:</ion-label>
+  <p>{{investigation.Description}}</p>
+  </div>
+</ion-content>

@@ -4,6 +4,9 @@ import { DescriptionPage } from '../description/description';
 import { PlistarcasosProvider } from '../../providers/plistarcasos/plistarcasos';
 import { Subscriber } from '../../../node_modules/rxjs/Subscriber';
 
+//Pagina details:
+import { DetailsPage } from '../details/details';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -15,22 +18,43 @@ export class HomePage {
   constructor(public navCtrl: NavController, public provedor:PlistarcasosProvider) {
 
   }
-  abrirDescription(id) {
-    console.log('abrirDescription: ' + id);
-    this.navCtrl.push(DescriptionPage, {
-      idCaso: id,
-    });
-  }
-
-
-
   ionViewDidLoad(){
-    this.provedor.GetInvestigationsWithFile( )
+    /* this.provedor.GetInvestigationsWithFile( )
     .subscribe(
       (data)=>{this.casos=data;},
       (error)=>{console.log(error);}
-    )
-    
+    ) */
+    this.provedor.GetInvestigations( )
+    .subscribe(
+      (data)=>{this.casos=data;},
+      (error)=>{console.log(error);}
+    )  
+  }
+  abrirDescription(id) {
+    /* console.log('abrirDescription: ' + id);
+    this.navCtrl.push(DescriptionPage, {
+      idCaso: id,
+    }); */
+    //console.log('DescriptionPage: ' + id);
+    this.navCtrl.push(DetailsPage, {
+      idCaso: id,
+    });
+  }
+  obtenerImagen(id){
+    console.log(id);
+    if (id != null) {
+      
+      /* this.provedor.GetRowInvestigationFile(id)
+      .subscribe(
+        (data)=>{
+          this.imagen=data[5];
+          console.log(data[5]);
+          return this.imagen;
+        },
+        (error)=>{console.log(error);}
+      ); */
+      return id;
+    }
   }
 
 }

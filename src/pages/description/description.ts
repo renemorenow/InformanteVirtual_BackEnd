@@ -4,7 +4,6 @@ import { mobiscroll } from '@mobiscroll/angular';
 import { AlertController } from 'ionic-angular';
 import { PlistarcasosProvider } from '../../providers/plistarcasos/plistarcasos';
 import { ContributionsPage } from '../contributions/contributions';
-import {} from '@base'
 
 @IonicPage()
 @Component({

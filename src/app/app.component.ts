@@ -6,6 +6,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { DescriptionPage } from '../pages/description/description';
+//Details
+import { DetailsPage } from '../pages/details/details';
 
 import { timer } from 'rxjs/observable/timer';
 import { flatten } from '../../node_modules/@angular/compiler';

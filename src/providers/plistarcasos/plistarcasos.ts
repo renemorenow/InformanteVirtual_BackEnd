@@ -1,12 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
-/*
-  Generated class for the PlistarcasosProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class PlistarcasosProvider {
   urlBaseService
@@ -17,24 +11,31 @@ export class PlistarcasosProvider {
     this.urlBaseService = 'https://catalogoservicioweb.policia.gov.co/wsInformante';
   }
 
+  GetInvestigations() {
+    return this.http.get(this.urlBaseService + "/api/Investigaciones/Investigations"
+    );
+  }
+
   GetInvestigationsWithFile() {
     return this.http.get(this.urlBaseService + "/api/Investigaciones/InvestigationsWithFile"
     );
   }
 
   GetInvestigation(Id: number) {
-    console.log("GetInvestigation: " + Id);
-    return this.http.get(this.urlBaseService + "/api/Investigaciones/Investigation?Id="+Id );
+    //console.log("GetInvestigation: " + Id);
+    return this.http.get(this.urlBaseService + "/api/Investigaciones/Investigation?Id="+Id);
   }
   
   GetInvestigationFiles(Id: number) {
-    console.log("GetInvestigation: " + Id);
-    return this.http.get(this.urlBaseService + "/api/Investigaciones/InvestigationFiles?Id="+Id );
+    //console.log("GetInvestigationFiles: " + Id);
+    //return this.http.get(this.urlBaseService + "/api/Investigaciones/InvestigationFiles?Id="+Id );
+    return this.http.get("https://apiadenunciarrnmc.policia.gov.co/wsInformante/api/LstInvestigationFiles?id="+Id);
   }
 
   GetRowInvestigationFile(Id: number) {
     console.log("GetInvestigation: " + Id);
-    return this.http.get(this.urlBaseService + "/api/Investigaciones/RowInvestigationFile?Id="+Id );
+    //return this.http.get(this.urlBaseService + "/api/Investigaciones/RowInvestigationFile?Id="+Id );
+    return this.http.get("https://apiadenunciarrnmc.policia.gov.co/wsInformante/api/RowInvestigationFile?id="+Id);
   }
 
   PostAddContributions(obj: Object) {
