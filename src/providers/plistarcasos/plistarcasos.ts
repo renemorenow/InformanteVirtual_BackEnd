@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { CompileTemplateMetadata } from "@angular/compiler";
 
 @Injectable()
 export class PlistarcasosProvider {
@@ -50,8 +51,10 @@ export class PlistarcasosProvider {
     this.http.post(url, obj).subscribe(
       data => {
         response = JSON.stringify(data);
+        response = data[0].Contribution_Id;
         alert("Sus aportes fueron guardados satisfactoriamente");
-        console.log("resultado Contributions: " + JSON.stringify(data));
+        //console.log("resultado Contributions: " + JSON.stringify(data));
+        console.log(response);
         return response;
       },
       error => {
@@ -72,9 +75,9 @@ export class PlistarcasosProvider {
     try {
       this.http.post(url, obj).subscribe(
         data => {
-          response = JSON.stringify(data);
-          console.log("PostAddInformants OK");
-          console.log("resultado: " + JSON.stringify(data));
+          response = data[0].Informant_Id;
+          //console.log("resultado PostAddInformants: " + JSON.stringify(data[0].Informant_Id));
+          console.log(response);
           return response;
         },
         error => {

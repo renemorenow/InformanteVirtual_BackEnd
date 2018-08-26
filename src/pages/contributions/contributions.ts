@@ -65,11 +65,12 @@ export class ContributionsPage {
     }
 
     debugger;
-    var resultado = this.provider.PostAddContributions(obj);
-    
+    response = this.provider.PostAddContributions(obj);
+    return response;
   }
 
   addContributionsFile(id: string, strArchivo: string){
+    let response: any;
     let obj: Object  = {
       Contribution_File_Id: 0,
       Contribution_Id: id,
@@ -78,10 +79,12 @@ export class ContributionsPage {
       File_Doc: strArchivo
     }
     debugger;
-    var resultado = this.provider.PostAddContributionFile(obj);
+    response = this.provider.PostAddContributionFile(obj);
+    return response;
   }
 
   addInformants(txtFirstName: string, txtLastName: string, txtEmail: string, txtPhoneNumber: string){
+    let response: any;
     let obj: Object  = {
       Informant_Id: 0,
       First_Name: txtFirstName,
@@ -90,8 +93,8 @@ export class ContributionsPage {
       Phone_Number: txtPhoneNumber
     }
     debugger;
-    var resultado = this.provider.PostAddInformants(obj);
-    return resultado;
+    response = this.provider.PostAddInformants(obj);
+    return response;
   }
 
   abrirGaleria(){
@@ -113,7 +116,7 @@ export class ContributionsPage {
       alert("Debe registrar alguna Información...!");
       return false;
     }
-    this.addContribution(txtDescription,txtFirstName,txtLastName,txtEmail,txtPhoneNumber);
+    //let resultado: any = this.addContribution(txtDescription,txtFirstName,txtLastName,txtEmail,txtPhoneNumber);
     this.navCtrl.push(UploadfilePage, {
       idCaso: this.idCaso,
     });
