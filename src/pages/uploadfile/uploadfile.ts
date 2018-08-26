@@ -41,7 +41,6 @@ export class UploadfilePage {
       //Fin Permisos      
     }
 
-
   getImage() {
     const options: CameraOptions = {
       quality: 100,
@@ -172,7 +171,7 @@ export class UploadfilePage {
       headers: {}
     }
     //file transfer action
-    fileTransfer.upload(this.myphoto, 'http://192.168.1.30/api/upload/uploadFoto.php', options)
+    /* fileTransfer.upload(this.myphoto, 'http://192.168.1.30/api/upload/uploadFoto.php', options)
       .then((data) => {
         alert("Success");
         loader.dismiss();
@@ -180,19 +179,20 @@ export class UploadfilePage {
         console.log(err);
         alert("Error");
         loader.dismiss();
-      });
+      }); */
+      this.addContributionsFile(this.idCaso);
   }
   //End SAMPLE TestCamera:
 
-  addContributionsFile(id: string, strArchivo: string){
+  addContributionsFile(id: string){
     let obj: Object  = {
       Contribution_File_Id: 0,
-      Contribution_Id: id,
+      Contribution_Id: 2,
       Path: 'Documents',
       Content_Type: 'image/jpeg',
-      File_Doc: strArchivo
+      File_Doc: this.imageURI
     }
-    debugger;
+    //debugger;
     var resultado = this.provedor.PostAddContributionFile(obj);
   }
 }

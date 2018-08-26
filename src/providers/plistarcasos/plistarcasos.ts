@@ -89,7 +89,7 @@ export class PlistarcasosProvider {
 
   PostAddContributionFile(obj: any) {
     let url: string = this.urlBaseService + "/api/Investigaciones/ContributionsFiles";
-    //console.log(obj);
+    console.log(obj);
     let response: any;
     let headers: Object = {
       "Content-Type": "application/json",

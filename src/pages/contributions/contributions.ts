@@ -44,6 +44,10 @@ export class ContributionsPage {
   }
 
   addContribution(txtDescription: string, txtFirstName: string, txtLastName: string, txtEmail: string, txtPhoneNumber: string){
+    if ((txtDescription == null) || (txtDescription == "")) {
+      alert("Debe registrar alguna Información...!");
+      return false;
+    }
     let response: any;
     var resultadoInformants;
     var _Informant_Id = 1;
@@ -104,7 +108,12 @@ export class ContributionsPage {
   //Sample from: https://www.djamware.com/post/599da16580aca768e4d2b130/how-to-upload-file-on-ionic-3-using-native-file-transfer-plugin
   // https://github.com/didinj/ionic3-cordova-upload-file
   
-  abrirFileUploadPage() {
+  abrirFileUploadPage(txtDescription: string, txtFirstName: string, txtLastName: string, txtEmail: string, txtPhoneNumber: string) {
+    if ((txtDescription == null) || (txtDescription == "")) {
+      alert("Debe registrar alguna Información...!");
+      return false;
+    }
+    this.addContribution(txtDescription,txtFirstName,txtLastName,txtEmail,txtPhoneNumber);
     this.navCtrl.push(UploadfilePage, {
       idCaso: this.idCaso,
     });

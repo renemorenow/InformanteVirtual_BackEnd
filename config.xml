@@ -85,8 +85,6 @@
         <variable name="PHOTO_LIBRARY_USAGE_DESCRIPTION" value="your usage message" />
     </plugin>
     <plugin name="cordova-plugin-android-permissions" spec="^1.0.0" />
-    <engine name="ios" spec="4.5.5" />
-    <engine name="android" spec="7.0.0" />
     <plugin name="cordova-plugin-geolocation" spec="^4.0.1">
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="Permitir Geolocalización de las fotos" />
     </plugin>
@@ -100,4 +98,6 @@
         <variable name="ACCOUNT_TYPE" value="$PACKAGE_NAME.account" />
         <variable name="CONTENT_AUTHORITY" value="$PACKAGE_NAME" />
     </plugin>
+    <engine name="ios" spec="4.5.5" />
+    <engine name="android" spec="7.0.0" />
 </widget>
