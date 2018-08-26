@@ -28,6 +28,9 @@ import { UploadfilePage } from '../pages/uploadfile/uploadfile';
 
 import { AndroidPermissions } from '@ionic-native/android-permissions';
 
+/* import { BackgroundGeolocation, BackgroundGeolocationConfig, BackgroundGeolocationResponse } from '@ionic-native/background-geolocation';
+import { Geolocation } from '@ionic-native/geolocation'; */
+
 @NgModule({
   declarations: [
     MyApp,
@@ -67,4 +70,27 @@ import { AndroidPermissions } from '@ionic-native/android-permissions';
    
   ]
 })
-export class AppModule {}
+export class AppModule {
+  //Inicio Localizacion
+      /* const config: BackgroundGeolocationConfig = {
+      desiredAccuracy: 10,
+      stationaryRadius: 20,
+      distanceFilter: 30,
+      debug: true, //  enable this hear sounds for background-geolocation life-cycle.
+      stopOnTerminate: false, // enable this to clear background location settings when the app terminates
+      };
+
+      this.backgroundGeolocation.configure(config)
+      .subscribe((location: BackgroundGeolocationResponse) => {
+
+      console.log(location);
+
+      });
+
+      // start recording location
+      this.backgroundGeolocation.start();
+
+      // If you wish to turn OFF background-tracking, call the #stop method.
+      this.backgroundGeolocation.stop(); */
+      //Fin Localizacion
+}

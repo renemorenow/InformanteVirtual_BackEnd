@@ -6,6 +6,9 @@ import { PlistarcasosProvider } from '../../providers/plistarcasos/plistarcasos'
 import { File } from '@ionic-native/file';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
 
+/* import { Geolocation } from '@ionic-native/geolocation';
+import { BackgroundGeolocation, BackgroundGeolocationConfig, BackgroundGeolocationResponse } from '@ionic-native/background-geolocation'; */
+
 @Component({
   selector: 'page-uploadfile',
   templateUrl: 'uploadfile.html'
@@ -19,6 +22,7 @@ export class UploadfilePage {
 
   constructor(public navCtrl: NavController,
     private transfer: FileTransfer,
+    private file: File,
     private camera: Camera,
     public loadingCtrl: LoadingController,
     public toastCtrl: ToastController,
@@ -27,15 +31,16 @@ export class UploadfilePage {
     public provedor:PlistarcasosProvider) {
       this.idCaso = navParams.get("idCaso");
       //console.log(this.idCaso);
-      
+
+      //Inicio Permisos:
       this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.CAMERA).then(
         result => console.log('Has permission?',result.hasPermission),
         err => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.CAMERA)
       );
       this.androidPermissions.requestPermissions([this.androidPermissions.PERMISSION.CAMERA, this.androidPermissions.PERMISSION.GET_ACCOUNTS]);
+      //Fin Permisos      
     }
 
-  
 
   getImage() {
     const options: CameraOptions = {
@@ -106,6 +111,7 @@ export class UploadfilePage {
       // imageData is either a base64 encoded string or a file URI
       // If it's base64:
       this.myphoto = 'data:image/jpeg;base64,' + imageData;
+      this.imageFileName = this.myphoto;
     }, (err) => {
       // Handle error
     });
