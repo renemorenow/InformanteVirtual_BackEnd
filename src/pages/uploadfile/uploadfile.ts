@@ -20,6 +20,7 @@ export class UploadfilePage {
     public toastCtrl: ToastController,
     public navParams: NavParams) {
       this.idCaso = navParams.get("idCaso");
+      console.log(this.idCaso);
     }
 
   getImage() {
@@ -54,10 +55,10 @@ export class UploadfilePage {
 
     fileTransfer.upload(this.imageURI, 'http://192.168.0.7:8080/api/uploadImage', options)
       .then((data) => {
-      console.log(data+" Uploaded Successfully");
+      console.log(data+" Imagen cargada satisfactoriamente");
       this.imageFileName = "http://192.168.0.7:8080/static/images/ionicfile.jpg"
       loader.dismiss();
-      this.presentToast("Image uploaded successfully");
+      this.presentToast("Imagen cargada satisfactoriamente");
     }, (err) => {
       console.log(err);
       loader.dismiss();
