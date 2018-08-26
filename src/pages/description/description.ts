@@ -4,6 +4,7 @@ import { mobiscroll } from '@mobiscroll/angular';
 import { AlertController } from 'ionic-angular';
 import { PlistarcasosProvider } from '../../providers/plistarcasos/plistarcasos';
 import { ContributionsPage } from '../contributions/contributions';
+import {} from '@base'
 
 @IonicPage()
 @Component({
@@ -17,7 +18,7 @@ export class DescriptionPage {
   idCaso
   investigation
   investigationFiles
-  
+  invFiles: any
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, public provedor:PlistarcasosProvider) {    
     this.idCaso = navParams.get("idCaso");
@@ -31,12 +32,29 @@ export class DescriptionPage {
       (error)=>{console.log(error);}
     )
     //console.log('ionViewDidLoad: ' + this.investigation);
-    debugger;
-    this.provedor.GetRowInvestigationFile(this.idCaso)
+    //debugger;
+    this.provedor.GetInvestigationFiles(this.idCaso)
     .subscribe(
       (data)=>{this.investigationFiles=data;},
       (error)=>{console.log(error);}
     )
+    var x = 0;
+    console.log(this.investigationFiles);
+    this.investigationFiles.forEach(element => {
+      console.log(element.File_Doc);
+      this.investigationFiles[x].File_Doc = this._arrayBufferToBase64(element.File_Doc);
+      x = x + 1;
+    });
+  }
+
+  _arrayBufferToBase64( buffer ) {
+    var binary = '';
+    var bytes = new Uint8Array( buffer );
+    var len = bytes.byteLength;
+    for (var i = 0; i < len; i++) {
+      binary += String.fromCharCode( bytes[ i ] );
+    }
+    return window.btoa( binary );
   }
 
   abrirAportes() {

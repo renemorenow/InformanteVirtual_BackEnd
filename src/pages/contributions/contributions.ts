@@ -38,14 +38,20 @@ export class ContributionsPage {
   }
 
   addContribution(txtDescription: string, txtFirstName: string, txtLastName: string, txtEmail: string, txtPhoneNumber: string){
+    let response: any;
+    var resultadoInformants;
+    var _Informant_Id = 1;
     if (txtFirstName != "") {
-      var _addInformants = this.addInformants(txtFirstName, txtLastName, txtEmail, txtPhoneNumber);
+      resultadoInformants = this.addInformants(txtFirstName, txtLastName, txtEmail, txtPhoneNumber);
+    }
+    if (resultadoInformants != null) {
+      _Informant_Id = resultadoInformants.Informant_Id;
     }
     let obj: Object  = {
-    CONTRIBUTION_ID: 0,
-    INVESTIGATION_ID: this.idCaso,
-    DESCRIPTION: txtDescription,
-    INFORMANT_ID: 1
+      Contribution_Id: 0,
+      Investigation_Id: this.idCaso,
+      Description: txtDescription,
+      Informant_Id: _Informant_Id
     }
 
     debugger;
@@ -55,11 +61,11 @@ export class ContributionsPage {
 
   addContributionsFile(id: string, strArchivo: string){
     let obj: Object  = {
-    CONTRIBUTION_FILE_ID: 0,
-    CONTRIBUTION_ID: id,
-    PATH: 'Documents',
-    CONTENT_TYPE: 'image/jpeg',
-    FILE_DOC: strArchivo
+      Contribution_File_Id: 0,
+      Contribution_Id: id,
+      Path: 'Documents',
+      Content_Type: 'image/jpeg',
+      File_Doc: strArchivo
     }
     debugger;
     var resultado = this.provider.PostAddContributionFile(obj);
@@ -67,11 +73,11 @@ export class ContributionsPage {
 
   addInformants(txtFirstName: string, txtLastName: string, txtEmail: string, txtPhoneNumber: string){
     let obj: Object  = {
-      INFORMANT_ID: 0,
-      FIRST_NAME: txtFirstName,
-      LAST_NAME: txtLastName,
-      EMAIL: txtEmail,
-      PHONE_NUMBER: txtPhoneNumber
+      Informant_Id: 0,
+      First_Name: txtFirstName,
+      Last_Name: txtLastName,
+      Email: txtEmail,
+      Phone_Number: txtPhoneNumber
     }
     debugger;
     var resultado = this.provider.PostAddInformants(obj);

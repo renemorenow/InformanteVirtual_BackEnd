@@ -25,7 +25,7 @@ export class HomePage {
 
 
   ionViewDidLoad(){
-    this.provedor.obtenerdatos( )
+    this.provedor.GetInvestigationsWithFile( )
     .subscribe(
       (data)=>{this.casos=data;},
       (error)=>{console.log(error);}

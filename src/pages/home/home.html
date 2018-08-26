@@ -17,24 +17,24 @@
         <img src="assets/imgs/logo_inf_virtual.png">
       </ion-avatar>
       <h2>{{investigation.TITLE}}</h2>
-      <p>{{investigation.CRIME_DATE.split('T')[0]}}</p>
+      <p>{{investigation.Crime_Date.split('T')[0]}}</p>
     </ion-item>
 
-    <img src="data:image/jpg;base64,{{investigation.Imagen}}">
+    <img src="data:image/jpg;base64,{{investigation.File_Doc}}">
 
     <!-- <ion-card-content> -->
     <!-- <ion-row>
       <ion-col>
-        <div>{{investigation.DESCRIPTION.substring(0, 80)}}...</div>
+        <div>{{investigation.Description.substring(0, 80)}}...</div>
       </ion-col>
     </ion-row> -->
     <!-- </ion-card-content> -->
 
-    <p>{{investigation.DESCRIPTION.substring(0, 180)}}</p>
+    <p>{{investigation.Description.substring(0, 180)}}</p>
 
     <ion-row>
       <ion-col>
-        <button block ion-button color="policia" (click)="abrirDescription(investigation.INVESTIGATION_ID)">Ver</button>
+        <button block ion-button color="policia" (click)="abrirDescription(investigation.Investigation_Id)">Ver</button>
       </ion-col>
       <ion-col align-self-center text-center>
         <ion-note>

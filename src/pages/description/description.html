@@ -15,17 +15,18 @@
             <img src="assets/imgs/logo_inf_virtual.png">
           </ion-avatar>
           <h2>{{investigation.TITLE}}</h2>
-          <p>{{investigation.CRIME_DATE.split('T')[0]}}</p>
+          <p>{{investigation.Crime_Date.split('T')[0]}}</p>
         </ion-item>
       
-        <img src="assets/imgs/fleteo1.jpg">
+        <!-- <img src="assets/imgs/fleteo1.jpg"> -->
         <ion-card ion-item *ngIf="investigationFiles">
-          <img src="data:image/jpg;base64,{{investigationFiles.FILE_DOC}}">
+          <!-- <img src="data:image/jpg;base64,{{investigationFiles.File_Doc}}"> -->
+          <img src="data:image/png;base64,{{invFiles.File_Doc}}">
         </ion-card>
         
         <!-- <img src="data:image/jpg;base64,{{investigation.foto}}"> -->
         <ion-card-content>
-          <p>{{investigation.DESCRIPTION}}</p>
+          <p>{{investigation.Description}}</p>
         </ion-card-content>
       
         <ion-row>
