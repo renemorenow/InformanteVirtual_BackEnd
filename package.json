@@ -20,6 +20,7 @@
     "@angular/http": "5.2.11",
     "@angular/platform-browser": "5.2.11",
     "@angular/platform-browser-dynamic": "5.2.11",
+    "@ionic-native/android-permissions": "^4.12.0",
     "@ionic-native/camera": "^4.12.0",
     "@ionic-native/core": "~4.11.0",
     "@ionic-native/file": "^4.12.0",
@@ -31,6 +32,7 @@
     "@mobiscroll/angular": "https://npm.mobiscroll.com/@mobiscroll/angular-trial/-/angular-trial-4.3.1.tgz",
     "cordova-android": "7.0.0",
     "cordova-ios": "4.5.5",
+    "cordova-plugin-android-permissions": "^1.0.0",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-ionic-keyboard": "^2.1.2",
     "cordova-plugin-ionic-webview": "^2.1.0",
@@ -59,7 +61,8 @@
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-telerik-imagepicker": {
         "PHOTO_LIBRARY_USAGE_DESCRIPTION": "your usage message"
-      }
+      },
+      "cordova-plugin-android-permissions": {}
     },
     "platforms": [
       "ios",

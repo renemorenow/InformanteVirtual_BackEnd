@@ -4,6 +4,7 @@ import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-nati
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { PlistarcasosProvider } from '../../providers/plistarcasos/plistarcasos';
 import { File } from '@ionic-native/file';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
 
 @Component({
   selector: 'page-uploadfile',
@@ -21,11 +22,20 @@ export class UploadfilePage {
     private camera: Camera,
     public loadingCtrl: LoadingController,
     public toastCtrl: ToastController,
+    private androidPermissions: AndroidPermissions,
     public navParams: NavParams,
     public provedor:PlistarcasosProvider) {
       this.idCaso = navParams.get("idCaso");
       //console.log(this.idCaso);
+      
+      this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.CAMERA).then(
+        result => console.log('Has permission?',result.hasPermission),
+        err => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.CAMERA)
+      );
+      this.androidPermissions.requestPermissions([this.androidPermissions.PERMISSION.CAMERA, this.androidPermissions.PERMISSION.GET_ACCOUNTS]);
     }
+
+  
 
   getImage() {
     const options: CameraOptions = {

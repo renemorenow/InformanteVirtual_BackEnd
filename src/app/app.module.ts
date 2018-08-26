@@ -26,6 +26,8 @@ import { File } from '@ionic-native/file';
 import { Camera } from '@ionic-native/camera';
 import { UploadfilePage } from '../pages/uploadfile/uploadfile';
 
+import { AndroidPermissions } from '@ionic-native/android-permissions';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -60,7 +62,8 @@ import { UploadfilePage } from '../pages/uploadfile/uploadfile';
     FileTransfer,
     FileTransferObject,
     File,
-    Camera
+    Camera,
+    AndroidPermissions
    
   ]
 })
