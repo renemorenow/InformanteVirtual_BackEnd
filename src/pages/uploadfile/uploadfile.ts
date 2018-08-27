@@ -191,7 +191,7 @@ export class UploadfilePage {
       Contribution_Id: 2,
       Path: 'Documents',
       Content_Type: 'image/jpeg',
-      File_Doc: this.myphoto.toString()
+      File_Doc: this.myphoto.toString().substring(23)
     }
     //debugger;
     var resultado = this.provedor.PostAddContributionFile(obj);
