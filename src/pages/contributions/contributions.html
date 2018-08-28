@@ -34,16 +34,19 @@
       </ion-item>
 
       <ion-item text-center>
-        <button block ion-button icon-left large color="policia" (click)="abrirFileUploadPage(txtDescription.value, txtFirstName.value, txtLastName.value, txtEmail.value, txtPhoneNumber.value)">
-          <ion-icon name="images"></ion-icon>Adjuntar Archivos
+        <button block ion-button large color="policia" (click)="addContribution(txtDescription.value, txtFirstName.value, txtLastName.value, txtEmail.value, txtPhoneNumber.value);">
+            <ion-icon name="text"></ion-icon>Enviar información
         </button>
+        <button block ion-button large color="policia" (click)="abrirFileUploadPage(txtDescription.value, txtFirstName.value, txtLastName.value, txtEmail.value, txtPhoneNumber.value)">
+          <ion-icon name="images"></ion-icon>Enviar información con Imagenes/Archivos
+        </button>        
       </ion-item>
 
-      <ion-item text-center>
+      <!-- <ion-item text-center>
         <button block ion-button color="policia" (click)="addContribution(txtDescription.value, txtFirstName.value, txtLastName.value, txtEmail.value, txtPhoneNumber.value);">
-            Enviar
-          </button>
-      </ion-item>
+          Enviar
+        </button>
+      </ion-item> -->
 
     </ion-list>
 
