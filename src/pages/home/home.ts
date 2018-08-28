@@ -33,7 +33,7 @@ export class HomePage {
         this.casos=data;
         this.casos.forEach(element => {
           element.File_Doc = "assets/imgs/inv_" + element.Investigation_Id + "_1.jpg";
-          console.log(element.File_Doc);
+          //console.log(element.File_Doc);
         });
       },
       (error)=>{console.log(error);}

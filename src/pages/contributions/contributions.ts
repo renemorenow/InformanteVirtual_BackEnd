@@ -9,6 +9,8 @@ import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-nati
 import { Camera, CameraOptions } from '@ionic-native/camera';
 
 import { UploadfilePage } from '../uploadfile/uploadfile';
+import { HomePage } from '../home/home';
+
 
 @IonicPage()
 @Component({
@@ -27,7 +29,14 @@ export class ContributionsPage {
   txtEmail: string;
   txtPhoneNumber: string;
   
-  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, public provider: PlistarcasosProvider, private formBuilder: FormBuilder, private imagePicker: ImagePicker) {
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    private alertCtrl: AlertController,
+    public provider: PlistarcasosProvider,
+    private formBuilder: FormBuilder,
+    private imagePicker: ImagePicker,
+    public loadingCtrl: LoadingController,
+    public toastCtrl: ToastController) {
       this.idCaso = navParams.get("idCaso");
       //console.log("this.idCaso: " + this.idCaso);
       this.datos = this.formBuilder.group({
@@ -36,14 +45,17 @@ export class ContributionsPage {
   }
 
   ionViewDidLoad() {
-    this.presentAlert();    
+    let _title: string = 'Señor Ciudadano';
+    let _subTitle: string = 'Recuerde envié la información que considere relevante para el esclarecimiento de los hechos.';
+    let _buttons: string = 'Enterado(a)';
+    this.presentAlert(_title, _subTitle, _buttons);
   }
   
-  presentAlert() {
+  presentAlert(_title, _subTitle, _buttons) {
     let alert = this.alertCtrl.create({
-      title: 'Señor Ciudadano',
-      subTitle: 'Recuerde envié la información que considere relevante para el esclarecimiento de los hechos.',
-      buttons: ['Enterado(a)']
+      title: _title,
+      subTitle: _subTitle,
+      buttons: [_buttons]
     });
     alert.present();
   }
@@ -56,14 +68,17 @@ export class ContributionsPage {
     let response: any;
     let objInformant: any = null;
     var _Informant_Id = 1;
-
+    let loader = this.loadingCtrl.create({
+      content: "Enviando..."
+    });
+    loader.present();
     let objContribution: Object  = {
       Contribution_Id: 0,
       Investigation_Id: this.idCaso,
       Description: txtDescription,
       Informant_Id: _Informant_Id
     }
-
+    
     if (txtFirstName != "") {
       //resultadoInformants = this.addInformants(txtFirstName, txtLastName, txtEmail, txtPhoneNumber);
       objInformant = {
@@ -79,8 +94,31 @@ export class ContributionsPage {
     //debugger;
     response = this.provider.PostAddContributions(objContribution);
     }
-    return response;
 
+    loader.dismiss();
+    let _title: string = 'Señor Ciudadano';
+    let _subTitle: string = 'Sus aportes fueron enviados satisfactoriamente.';
+    let _buttons: string = 'Enterado(a)';
+    this.presentToast(_subTitle);    
+    this.presentAlert(_title, _subTitle, _buttons);
+
+    this.navCtrl.push(HomePage, {
+      
+    });
+
+  }
+  presentToast(msg) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 6000,
+      position: 'bottom'
+    });
+
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+
+    toast.present();
   }
 
   addContributionsFile(id: string, strArchivo: string){
@@ -132,11 +170,11 @@ export class ContributionsPage {
     //let resultado: any = this.addContribution(txtDescription,txtFirstName,txtLastName,txtEmail,txtPhoneNumber);
     this.navCtrl.push(UploadfilePage, {
       idCaso: this.idCaso,
-      txtDescription: this.txtDescription,
-      txtFirstName: this.txtFirstName,
-      txtLastName: this.txtLastName,
-      txtEmail: this.txtEmail,
-      txtPhoneNumber: this.txtPhoneNumber,
+      txtDescription:   txtDescription,
+      txtFirstName: txtFirstName,
+      txtLastName: txtLastName,
+      txtEmail: txtEmail,
+      txtPhoneNumber: txtPhoneNumber,
     });
   }
   //end sample

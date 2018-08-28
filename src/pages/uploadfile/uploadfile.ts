@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController, ToastController, NavParams } from 'ionic-angular';
+import { NavController, LoadingController, ToastController, NavParams, AlertController } from 'ionic-angular';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { PlistarcasosProvider } from '../../providers/plistarcasos/plistarcasos';
 import { File } from '@ionic-native/file';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
 
+import { HomePage } from '../home/home';
 /* import { Geolocation } from '@ionic-native/geolocation';
 import { BackgroundGeolocation, BackgroundGeolocationConfig, BackgroundGeolocationResponse } from '@ionic-native/background-geolocation'; */
 
@@ -31,10 +32,12 @@ export class UploadfilePage {
     private camera: Camera,
     public loadingCtrl: LoadingController,
     public toastCtrl: ToastController,
+    private alertCtrl: AlertController,
     private androidPermissions: AndroidPermissions,
     public navParams: NavParams,
     public provider:PlistarcasosProvider) {
       this.idCaso = navParams.get("idCaso");
+      this.txtDescription = navParams.get("txtDescription");
       this.txtFirstName = navParams.get("txtFirstName");
       this.txtLastName = navParams.get("txtLastName");
       this.txtEmail = navParams.get("txtEmail");
@@ -204,7 +207,7 @@ export class UploadfilePage {
       return false;
     }
     let loader = this.loadingCtrl.create({
-      content: "Uploading..."
+      content: "Enviando..."
     });
     loader.present();
     let response: any;
@@ -237,8 +240,24 @@ export class UploadfilePage {
     response = this.provider.PostAddInformantContribWithFile(objInformant,objContribution,objContributionFile);
     loader.dismiss();
     this.presentToast("Sus aportes fueron cargados satisfactoriamente.");
-    return response;
+    loader.dismiss();
+    let title: 'Señor Ciudadano';
+    let subTitle: 'Sus aportes fueron enviados satisfactoriamente.';
+    let buttons: 'Enterado(a)';
+    this.presentToast(subTitle);    
+    this.presentAlert(title, subTitle, buttons);
+
+    this.navCtrl.push(HomePage, {
+      
+    });
   }
   //
-  
+  presentAlert(_title, _subTitle, _buttons) {
+    let alert = this.alertCtrl.create({
+      title: _title,
+      subTitle: _subTitle,
+      buttons: [_buttons]
+    });
+    alert.present();
+  }
 }

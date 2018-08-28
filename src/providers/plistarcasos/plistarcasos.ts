@@ -49,8 +49,8 @@ export class PlistarcasosProvider {
 
     this.http.post(url, obj).subscribe(
       data => {
-        response = JSON.stringify(data);
-        response = data[0].Contribution_Id;
+        let response1: any = JSON.stringify(data);
+        response = response1.Contribution_Id;
         alert("Sus aportes fueron guardados satisfactoriamente");
         //console.log("resultado Contributions: " + JSON.stringify(data));
         console.log(response);
@@ -125,17 +125,31 @@ export class PlistarcasosProvider {
     if (objInformant != null) {
       this.http.post(urlInformant, objInformant).subscribe(
         data => {
-          var response0 = data[0].Informant_Id;
-          objContribution.Informant_Id = response0;
+          let objInformantResp: any = JSON.stringify(data);
+          var value = objInformantResp.split(',')[0].split(':')[1];
+          //console.log(value);
+          var _Informant_Id = 1;
+          if (value > 0) {
+            _Informant_Id = value;
+          }
+          objContribution.Informant_Id = _Informant_Id;
           this.http.post(urlContribution, objContribution).subscribe(            
             data => {
-              var response1 = data[0].Contribution_Id;
-              objContributionFile.Contribution_Id = response1;
-              if (response1 > 0) {
+              let objContributionResp: any = JSON.stringify(data);
+              var value = objContributionResp.split(',')[0].split(':')[1];
+              //console.log(value);
+              var _Contribution_Id = 1;
+              if (value > 0) {
+                _Contribution_Id = value;
+              }
+              objContributionFile.Contribution_Id = _Contribution_Id;
+              if (_Contribution_Id > 0) {
                 this.http.post(urlContributionFile, objContributionFile).subscribe(
                   data => {
-                    response = data[0].Contribution_File_Id;
-                    alert("Sus aportes fueron guardados satisfactoriamente");
+                    let response2: any = JSON.stringify(data);
+                    var value = response2.split(',')[0].split(':')[1];
+                    response = value;
+                    alert("Sus aportes fueron guardados satisfactoriamente.");
                     return response;
                   },
                   error => {
@@ -158,13 +172,21 @@ export class PlistarcasosProvider {
     } else {
     this.http.post(urlContribution, objContribution).subscribe(
       data => {
-        var response1 = data[0].Contribution_Id;
-        objContributionFile.Contribution_Id = response1;
-        if (response1 > 0) {
+        let objContributionResp: any = JSON.stringify(data);
+              var value = objContributionResp.split(',')[0].split(':')[1];
+              //console.log(value);
+              var _Contribution_Id = 1;
+              if (value > 0) {
+                _Contribution_Id = value;
+              }
+              objContributionFile.Contribution_Id = _Contribution_Id;
+        if (_Contribution_Id > 0) {
           this.http.post(urlContributionFile, objContributionFile).subscribe(
             data => {
-              response = data[0].Contribution_File_Id;
-              alert("Sus aportes fueron guardados satisfactoriamente");
+              let response2: any = JSON.stringify(data);
+              var value = response2.split(',')[0].split(':')[1];
+              response = value;
+              alert("Sus aportes fueron guardados satisfactoriamente.");
               return response;
             },
             error => {
@@ -187,15 +209,30 @@ export class PlistarcasosProvider {
     let urlInformant: string = this.urlBaseService + "/api/Investigaciones/Informants";
     let urlContribution: string = this.urlBaseService + "/api/Investigaciones/Contributions";
     let response: any;
+    let objInformantResp: any = {
+      Informant_Id: 1,
+      First_Name: null,
+      Last_Name: null,
+      Email: null,
+      Phone_Number: null
+      }
 
     if (objInformant != null) {
       this.http.post(urlInformant, objInformant).subscribe(
         data => {
-          var response0 = data[0].Informant_Id;
-          objContribution.Informant_Id = response0;
+          objInformantResp = JSON.stringify(data);
+          var value = objInformantResp.split(',')[0].split(':')[1];
+          //console.log(value);
+          var _Informant_Id = 1;
+          if (value > 0) {
+            _Informant_Id = value;
+          }
+          objContribution.Informant_Id = _Informant_Id;
           this.http.post(urlContribution, objContribution).subscribe(            
             data => {
-              response = data[0].Contribution_Id;
+              let response1: any = JSON.stringify(data);
+              var value = objInformantResp.split(',')[0].split(':')[1];
+              response = value;
               return response;
             },
             error => {
