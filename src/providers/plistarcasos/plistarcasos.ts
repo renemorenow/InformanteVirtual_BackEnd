@@ -28,8 +28,8 @@ export class PlistarcasosProvider {
   
   GetInvestigationFiles(Id: number) {
     //console.log("GetInvestigationFiles: " + Id);
-    return this.http.get(this.urlBaseService + "/api/Investigaciones/InvestigationFiles?Id="+Id );
-    // return this.http.get("https://apiadenunciarrnmc.policia.gov.co/wsInformante/api/LstInvestigationFiles?id="+Id);
+    //return this.http.get(this.urlBaseService + "/api/Investigaciones/InvestigationFiles?Id="+Id );
+    return this.http.get("https://apiadenunciarrnmc.policia.gov.co/wsInformante/api/LstInvestigationFiles?id="+Id);
   }
 
   GetRowInvestigationFile(Id: number) {
