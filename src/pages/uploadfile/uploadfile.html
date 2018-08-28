@@ -1,24 +1,23 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Adjuntar Archivo</ion-title>
+    <ion-title>Adjuntar Imágen/Archivo</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
-  <ion-item>
+  <!-- <ion-item>
     <p>{{imageURI}}</p>
     <button ion-button color="secondary" (click)="getImage()">Capturar Imagen</button>
-  </ion-item>
+  </ion-item> -->
   <ion-item>
     <h4>Vista previa</h4>
     <img src="{{imageFileName}}" *ngIf="imageFileName" alt="Ionic File" width="300" />
   </ion-item>
-  <ion-item>
+  <!-- <ion-item>
     <button ion-button (click)="uploadFile()">Adjuntar Archivo</button>
-  </ion-item>
-  <br/>
+  </ion-item> -->
   <br/>
   <button ion-button (click)="takePhoto()" full color="primary">Tomar Foto</button>
   <button ion-button (click)="getImageTestCamera()" full color="secondary">Seleccionar Foto</button>

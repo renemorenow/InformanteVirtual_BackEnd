@@ -103,7 +103,7 @@ export class PlistarcasosProvider {
       this.http.post(url, obj).subscribe(
         data => {
           response = data[0].Contribution_File_Id;
-          console.log(response);
+          //console.log(response);
           alert("Sus aportes fueron guardados satisfactoriamente");
           //console.log("resultado: " + JSON.stringify(data));
           return response;

@@ -19,16 +19,25 @@ export class HomePage {
 
   }
   ionViewDidLoad(){
-    this.provedor.GetInvestigationsWithFile( )
+    /* this.provedor.GetInvestigationsWithFile( )
     .subscribe(
-      (data)=>{this.casos=data;},
+      (data)=>{
+        this.casos=data;        
+      },
       (error)=>{console.log(error);}
-    )
-    /* this.provedor.GetInvestigations( )
+    ) */
+    //Sin fotos
+    this.provedor.GetInvestigations( )
     .subscribe(
-      (data)=>{this.casos=data;},
+      (data)=>{
+        this.casos=data;
+        this.casos.forEach(element => {
+          element.File_Doc = "assets/imgs/inv_" + element.Investigation_Id + "_1.jpg";
+          console.log(element.File_Doc);
+        });
+      },
       (error)=>{console.log(error);}
-    )  */ 
+    )  
   }
   abrirDescription(id) {
     /* console.log('abrirDescription: ' + id);

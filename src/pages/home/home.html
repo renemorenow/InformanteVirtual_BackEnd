@@ -20,7 +20,8 @@
       <p>{{investigation.Crime_Date.split('T')[0]}}</p>
     </ion-item>
 
-    <img src="data:image/jpg;base64,{{investigation.File_Doc}}">
+    <!-- <img src="data:image/jpg;base64,{{investigation.File_Doc}}"> -->
+    <img src="{{investigation.File_Doc}}">
 
     <p>{{investigation.Description.substring(0, 180)}}</p>
 
