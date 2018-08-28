@@ -180,6 +180,36 @@ export class PlistarcasosProvider {
       }
     );
   }
+
+  }
+
+  PostAddInformantContrib(objInformant: any, objContribution: any) {
+    let urlInformant: string = this.urlBaseService + "/api/Investigaciones/Informants";
+    let urlContribution: string = this.urlBaseService + "/api/Investigaciones/Contributions";
+    let response: any;
+
+    if (objInformant != null) {
+      this.http.post(urlInformant, objInformant).subscribe(
+        data => {
+          var response0 = data[0].Informant_Id;
+          objContribution.Informant_Id = response0;
+          this.http.post(urlContribution, objContribution).subscribe(            
+            data => {
+              response = data[0].Contribution_Id;
+              return response;
+            },
+            error => {
+              console.log(JSON.stringify(error.json()));
+            }
+          );
+        },
+        error => {
+          console.log("PostAddInformantContrib Error");
+          console.log(JSON.stringify(error.json()));
+        }
+      );
+    }
+  
   }
 
 }

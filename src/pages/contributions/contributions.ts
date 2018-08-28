@@ -54,24 +54,33 @@ export class ContributionsPage {
       return false;
     }
     let response: any;
-    var resultadoInformants;
+    let objInformant: any = null;
     var _Informant_Id = 1;
-    if (txtFirstName != "") {
-      resultadoInformants = this.addInformants(txtFirstName, txtLastName, txtEmail, txtPhoneNumber);
-    }
-    if (resultadoInformants != null) {
-      _Informant_Id = resultadoInformants.Informant_Id;
-    }
-    let obj: Object  = {
+
+    let objContribution: Object  = {
       Contribution_Id: 0,
       Investigation_Id: this.idCaso,
       Description: txtDescription,
       Informant_Id: _Informant_Id
     }
 
-    debugger;
-    response = this.provider.PostAddContributions(obj);
+    if (txtFirstName != "") {
+      //resultadoInformants = this.addInformants(txtFirstName, txtLastName, txtEmail, txtPhoneNumber);
+      objInformant = {
+      Informant_Id: 0,
+      First_Name: txtFirstName,
+      Last_Name: txtLastName,
+      Email: txtEmail,
+      Phone_Number: txtPhoneNumber
+      }
+      //debugger;
+      response = this.provider.PostAddInformantContrib(objInformant, objContribution);      
+    } else {
+    //debugger;
+    response = this.provider.PostAddContributions(objContribution);
+    }
     return response;
+
   }
 
   addContributionsFile(id: string, strArchivo: string){
@@ -83,7 +92,7 @@ export class ContributionsPage {
       Content_Type: 'image/jpeg',
       File_Doc: strArchivo
     }
-    debugger;
+    //debugger;
     response = this.provider.PostAddContributionFile(obj);
     return response;
   }
@@ -114,8 +123,7 @@ export class ContributionsPage {
   }
 
   //Sample from: https://www.djamware.com/post/599da16580aca768e4d2b130/how-to-upload-file-on-ionic-3-using-native-file-transfer-plugin
-  // https://github.com/didinj/ionic3-cordova-upload-file
-  
+  // https://github.com/didinj/ionic3-cordova-upload-file  
   abrirFileUploadPage(txtDescription: string, txtFirstName: string, txtLastName: string, txtEmail: string, txtPhoneNumber: string) {
     if ((txtDescription == null) || (txtDescription == "")) {
       alert("Debe registrar alguna Información...!");

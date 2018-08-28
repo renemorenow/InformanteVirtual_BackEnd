@@ -71,7 +71,7 @@ export class UploadfilePage {
     });
     loader.present();
     const fileTransfer: FileTransferObject = this.transfer.create();
-
+    
     let options: FileUploadOptions = {
       fileKey: 'ionicfile',
       fileName: 'ionicfile',
@@ -79,6 +79,7 @@ export class UploadfilePage {
       mimeType: "image/jpeg",
       headers: {}
     }
+
 
     fileTransfer.upload(this.imageURI, 'http://192.168.0.7:8080/api/uploadImage', options)
       .then((data) => {
@@ -106,6 +107,7 @@ export class UploadfilePage {
 
     toast.present();
   }
+
 
   //SAMPLE TestCamera:
   takePhoto(){
@@ -194,6 +196,7 @@ export class UploadfilePage {
     var resultado = this.provider.PostAddContributionFile(obj);
   } */
 
+
   //
   addInformantContribWithFile(){
     if ((this.txtDescription == null) || (this.txtDescription == "")) {
@@ -237,4 +240,5 @@ export class UploadfilePage {
     return response;
   }
   //
+  
 }
