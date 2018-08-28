@@ -19,6 +19,11 @@ export class UploadfilePage {
   imageFileName:any;
   idCaso;
   myphoto:any;
+  txtDescription: string;
+  txtFirstName: string;
+  txtLastName: string;
+  txtEmail: string;
+  txtPhoneNumber: string;
 
   constructor(public navCtrl: NavController,
     private transfer: FileTransfer,
@@ -28,8 +33,12 @@ export class UploadfilePage {
     public toastCtrl: ToastController,
     private androidPermissions: AndroidPermissions,
     public navParams: NavParams,
-    public provedor:PlistarcasosProvider) {
+    public provider:PlistarcasosProvider) {
       this.idCaso = navParams.get("idCaso");
+      this.txtFirstName = navParams.get("txtFirstName");
+      this.txtLastName = navParams.get("txtLastName");
+      this.txtEmail = navParams.get("txtEmail");
+      this.txtPhoneNumber = navParams.get("txtPhoneNumber");
       //console.log(this.idCaso);
 
       //Inicio Permisos:
@@ -126,10 +135,12 @@ export class UploadfilePage {
       // imageData is either a base64 encoded string or a file URI
       // If it's base64:
       this.myphoto = 'data:image/jpeg;base64,' + imageData;
+      this.imageFileName = this.myphoto;
     }, (err) => {
       // Handle error
     });
   }
+  
   cropImage() {
     const options: CameraOptions = {
       quality: 70,
@@ -144,32 +155,18 @@ export class UploadfilePage {
       // imageData is either a base64 encoded string or a file URI
       // If it's base64:
       this.myphoto = 'data:image/jpeg;base64,' + imageData;
+      this.imageFileName = this.myphoto;
     }, (err) => {
       // Handle error
     });
   }
   uploadImage(){
     //Show loading
-    let loader = this.loadingCtrl.create({
+    /* let loader = this.loadingCtrl.create({
       content: "Uploading..."
     });
-    loader.present();
+    loader.present(); */
 
-    //create file transfer object
-    const fileTransfer: FileTransferObject = this.transfer.create();
-
-    //random int
-    var random = Math.floor(Math.random() * 100);
-
-    //option transfer
-    let options: FileUploadOptions = {
-      fileKey: 'photo',
-      fileName: "myImage_" + random + ".jpg",
-      chunkedMode: false,
-      httpMethod: 'post',
-      mimeType: "image/jpeg",
-      headers: {}
-    }
     //file transfer action
     /* fileTransfer.upload(this.myphoto, 'http://192.168.1.30/api/upload/uploadFoto.php', options)
       .then((data) => {
@@ -180,12 +177,12 @@ export class UploadfilePage {
         alert("Error");
         loader.dismiss();
       }); */
-      this.addContributionsFile(this.idCaso);
-      loader.dismiss();
+      // this.addContributionsFile(this.idCaso);
+      this.addInformantContribWithFile();      
   }
   //End SAMPLE TestCamera:
 
-  addContributionsFile(id: string){
+  /* addContributionsFile(id: string){
     let obj: Object  = {
       Contribution_File_Id: 0,
       Contribution_Id: 2,
@@ -194,6 +191,50 @@ export class UploadfilePage {
       File_Doc: this.myphoto.toString().substring(23)
     }
     //debugger;
-    var resultado = this.provedor.PostAddContributionFile(obj);
+    var resultado = this.provider.PostAddContributionFile(obj);
+  } */
+
+  //
+  addInformantContribWithFile(){
+    if ((this.txtDescription == null) || (this.txtDescription == "")) {
+      alert("Debe registrar alguna Información...!");
+      return false;
+    }
+    let loader = this.loadingCtrl.create({
+      content: "Uploading..."
+    });
+    loader.present();
+    let response: any;
+    let objInformant: any = null;
+    
+    if (this.txtFirstName != "") {
+      objInformant = {
+        Informant_Id: 0,
+        First_Name: this.txtFirstName,
+        Last_Name: this.txtLastName,
+        Email: this.txtEmail,
+        Phone_Number: this.txtPhoneNumber
+      }
+    }
+    
+    let objContribution: any = {
+      Contribution_Id: 0,
+      Investigation_Id: this.idCaso,
+      Description: this.txtDescription,
+      Informant_Id: 1
+    }
+      
+    let objContributionFile: any = {
+      Contribution_File_Id: 0,
+      Contribution_Id: 0,
+      Path: 'Documents',
+      Content_Type: 'image/jpeg',
+      File_Doc: this.myphoto.toString().substring(23)
+    }
+    response = this.provider.PostAddInformantContribWithFile(objInformant,objContribution,objContributionFile);
+    loader.dismiss();
+    this.presentToast("Sus aportes fueron cargados satisfactoriamente.");
+    return response;
   }
+  //
 }

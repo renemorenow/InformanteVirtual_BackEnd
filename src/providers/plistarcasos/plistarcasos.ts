@@ -7,7 +7,6 @@ export class PlistarcasosProvider {
   urlBaseService
 
   constructor(public http: HttpClient) {
-    //console.log('Hello PlistarcasosProvider Provider');
     //this.urlBaseService = 'https://apiadenunciarrnmc.policia.gov.co/wsInformante';
     this.urlBaseService = 'https://catalogoservicioweb.policia.gov.co/wsInformante';
   }
@@ -29,14 +28,14 @@ export class PlistarcasosProvider {
   
   GetInvestigationFiles(Id: number) {
     //console.log("GetInvestigationFiles: " + Id);
-    //return this.http.get(this.urlBaseService + "/api/Investigaciones/InvestigationFiles?Id="+Id );
-    return this.http.get("https://apiadenunciarrnmc.policia.gov.co/wsInformante/api/LstInvestigationFiles?id="+Id);
+    return this.http.get(this.urlBaseService + "/api/Investigaciones/InvestigationFiles?Id="+Id );
+    // return this.http.get("https://apiadenunciarrnmc.policia.gov.co/wsInformante/api/LstInvestigationFiles?id="+Id);
   }
 
   GetRowInvestigationFile(Id: number) {
     console.log("GetInvestigation: " + Id);
-    //return this.http.get(this.urlBaseService + "/api/Investigaciones/RowInvestigationFile?Id="+Id );
-    return this.http.get("https://apiadenunciarrnmc.policia.gov.co/wsInformante/api/RowInvestigationFile?id="+Id);
+    return this.http.get(this.urlBaseService + "/api/Investigaciones/RowInvestigationFile?Id="+Id );
+    // return this.http.get("https://apiadenunciarrnmc.policia.gov.co/wsInformante/api/RowInvestigationFile?id="+Id);
   }
 
   PostAddContributions(obj: Object) {
@@ -115,6 +114,72 @@ export class PlistarcasosProvider {
     } catch (error) {
       console.error(error);
     }
+  }
+
+  PostAddInformantContribWithFile(objInformant: any, objContribution: any, objContributionFile: any) {
+    let urlInformant: string = this.urlBaseService + "/api/Investigaciones/Informants";
+    let urlContribution: string = this.urlBaseService + "/api/Investigaciones/Contributions";
+    let urlContributionFile: string = this.urlBaseService + "/api/Investigaciones/ContributionsFiles";
+    let response: any;
+
+    if (objInformant != null) {
+      this.http.post(urlInformant, objInformant).subscribe(
+        data => {
+          var response0 = data[0].Informant_Id;
+          objContribution.Informant_Id = response0;
+          this.http.post(urlContribution, objContribution).subscribe(            
+            data => {
+              var response1 = data[0].Contribution_Id;
+              objContributionFile.Contribution_Id = response1;
+              if (response1 > 0) {
+                this.http.post(urlContributionFile, objContributionFile).subscribe(
+                  data => {
+                    response = data[0].Contribution_File_Id;
+                    alert("Sus aportes fueron guardados satisfactoriamente");
+                    return response;
+                  },
+                  error => {
+                    console.log(JSON.stringify(error.json()));
+                  }
+                );
+              }              
+              return response;
+            },
+            error => {
+              console.log(JSON.stringify(error.json()));
+            }
+          );
+        },
+        error => {
+          console.log("PostAddInformants Error");
+          console.log(JSON.stringify(error.json()));
+        }
+      );
+    } else {
+    this.http.post(urlContribution, objContribution).subscribe(
+      data => {
+        var response1 = data[0].Contribution_Id;
+        objContributionFile.Contribution_Id = response1;
+        if (response1 > 0) {
+          this.http.post(urlContributionFile, objContributionFile).subscribe(
+            data => {
+              response = data[0].Contribution_File_Id;
+              alert("Sus aportes fueron guardados satisfactoriamente");
+              return response;
+            },
+            error => {
+              console.log(JSON.stringify(error.json()));
+            }
+          );
+        }
+        
+        return response;
+      },
+      error => {
+        console.log(JSON.stringify(error.json()));
+      }
+    );
+  }
   }
 
 }

@@ -21,6 +21,11 @@ export class ContributionsPage {
   objContrib: any[] = [];
   datos: any ={};
   idCaso;
+  txtDescription: string;
+  txtFirstName: string;
+  txtLastName: string;
+  txtEmail: string;
+  txtPhoneNumber: string;
   
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, public provider: PlistarcasosProvider, private formBuilder: FormBuilder, private imagePicker: ImagePicker) {
       this.idCaso = navParams.get("idCaso");
@@ -119,6 +124,11 @@ export class ContributionsPage {
     //let resultado: any = this.addContribution(txtDescription,txtFirstName,txtLastName,txtEmail,txtPhoneNumber);
     this.navCtrl.push(UploadfilePage, {
       idCaso: this.idCaso,
+      txtDescription: this.txtDescription,
+      txtFirstName: this.txtFirstName,
+      txtLastName: this.txtLastName,
+      txtEmail: this.txtEmail,
+      txtPhoneNumber: this.txtPhoneNumber,
     });
   }
   //end sample
