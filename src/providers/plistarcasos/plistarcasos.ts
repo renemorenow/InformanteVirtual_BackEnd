@@ -12,8 +12,11 @@ export class PlistarcasosProvider {
   }
 
   GetInvestigations() {
-    return this.http.get(this.urlBaseService + "/api/Investigaciones/Investigations"
-    );
+    return this.http.get(this.urlBaseService + "/api/Investigaciones/Investigations");
+  }
+
+  GetInvestigationsFilter(Id, p_State, p_City) {
+    return this.http.get(this.urlBaseService + "/api/Investigaciones/LstInvestigationFilter?Id="+Id+"&p_State="+p_State+"&p_City="+p_City);
   }
 
   GetInvestigationsWithFile() {
