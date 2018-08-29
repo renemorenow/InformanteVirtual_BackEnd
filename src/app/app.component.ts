@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { DescriptionPage } from '../pages/description/description';
+import { InvestigationsfilterPage } from '../pages/Investigationsfilter/investigationsfilter';
 //Details
 import { DetailsPage } from '../pages/details/details';
 
@@ -34,8 +35,8 @@ export class MyApp {
     this.pages = [
       { title: 'Inicio', component: HomePage },
       { title: 'Categorias', component: ListPage },
-      { title: 'Departamento', component: HomePage },
-      { title: 'Municipio', component: HomePage },
+      { title: 'Departamento', component: InvestigationsfilterPage },
+      { title: 'Municipio', component: InvestigationsfilterPage },
       { title: 'Salir', component: HomePage }
     ];
 
