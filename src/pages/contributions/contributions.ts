@@ -62,7 +62,12 @@ export class ContributionsPage {
 
   addContribution(txtDescription: string, txtFirstName: string, txtLastName: string, txtEmail: string, txtPhoneNumber: string){
     if ((txtDescription == null) || (txtDescription == "")) {
-      alert("Debe registrar alguna Información...!");
+      //alert("Debe registrar alguna Información...!");
+      let _title: string = 'Atención:';
+      let _subTitle: string = 'Debe registrar alguna Información...!';
+      let _buttons: string = 'Aceptar';
+      this.presentToast(_subTitle);
+      this.presentAlert(_title, _subTitle, _buttons);
       return false;
     }
     let response: any;
@@ -164,7 +169,11 @@ export class ContributionsPage {
   // https://github.com/didinj/ionic3-cordova-upload-file  
   abrirFileUploadPage(txtDescription: string, txtFirstName: string, txtLastName: string, txtEmail: string, txtPhoneNumber: string) {
     if ((txtDescription == null) || (txtDescription == "")) {
-      alert("Debe registrar alguna Información...!");
+      let _title: string = 'Atención:';
+      let _subTitle: string = 'Debe registrar alguna Información...!';
+      let _buttons: string = 'Aceptar';
+      this.presentToast(_subTitle);
+      this.presentAlert(_title, _subTitle, _buttons);
       return false;
     }
     //let resultado: any = this.addContribution(txtDescription,txtFirstName,txtLastName,txtEmail,txtPhoneNumber);

@@ -7,11 +7,12 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content class="cards-bg social-cards">
+<ion-content>
 
     <ion-item>
       <ion-label>categorías:</ion-label>
       <ion-select [(ngModel)]="categorias">
+        <ion-option value="0" selected>Seleccione una opción...</ion-option>
         <ion-option value="1">Homicidio</ion-option>
         <ion-option value="3">Secuestro</ion-option>
         <ion-option value="4">Hurto</ion-option>
@@ -20,6 +21,7 @@
     <ion-item>
       <ion-label>Departamento:</ion-label>
       <ion-select [(ngModel)]="departamento">
+        <ion-option value="0" selected>Seleccione una opción...</ion-option>
         <ion-option value="ATLANTICO">ATLANTICO</ion-option>
         <ion-option value="CUNDINAMARCA">CUNDINAMARCA</ion-option>
         <ion-option value="MAGDALENA">MAGDALENA</ion-option>
@@ -28,39 +30,15 @@
     <ion-item>
       <ion-label>Municipio:</ion-label>
       <ion-select [(ngModel)]="municipio">
+        <ion-option value="0" selected>Seleccione una opción...</ion-option>
         <ion-option value="ARACATACA">ARACATACA</ion-option>
         <ion-option value="BARRANQUILLA">BARRANQUILLA</ion-option>
         <ion-option value="BOGOTA">BOGOTÁ</ion-option>
       </ion-select>
     </ion-item>
 
-  <h3 style="text-align: center">Investigaciones en Proceso</h3>
-
-  <ion-card ion-item *ngFor="let investigation of casos">
-
     <ion-item>
-      <ion-avatar item-start>
-        <img src="assets/imgs/logo_inf_virtual.png">
-      </ion-avatar>
-      <h2 style="font-weight: bold;">{{investigation.Title}}</h2>
-      <p>{{investigation.Crime_Date.split('T')[0]}}</p>
+      <button ion-button round full (click)="ejecutarFiltro(categorias, departamento, municipio)" full color="policia" ><ion-icon name="search"></ion-icon>Buscar</button>
     </ion-item>
-
-    <!-- <img src="data:image/jpg;base64,{{investigation.File_Doc}}"> -->
-    <img src="{{investigation.File_Doc}}">
-
-    <p>{{investigation.Description.substring(0, 180)}}</p>
-
-    <ion-row>
-      <ion-col>
-        <button block ion-button color="policia" (click)="abrirDescription(investigation.Investigation_Id)">Ver</button>
-      </ion-col>
-      <ion-col align-self-center text-center>
-        <ion-note>
-        </ion-note>
-      </ion-col>
-    </ion-row>
-
-  </ion-card>
 
 </ion-content>

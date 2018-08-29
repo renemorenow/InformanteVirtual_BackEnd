@@ -54,8 +54,6 @@ export class PlistarcasosProvider {
       data => {
         let response1: any = JSON.stringify(data);
         response = response1.Contribution_Id;
-        alert("Sus aportes fueron guardados satisfactoriamente");
-        //console.log("resultado Contributions: " + JSON.stringify(data));
         console.log(response);
         return response;
       },
@@ -105,9 +103,6 @@ export class PlistarcasosProvider {
       this.http.post(url, obj).subscribe(
         data => {
           response = data[0].Contribution_File_Id;
-          //console.log(response);
-          alert("Sus aportes fueron guardados satisfactoriamente");
-          //console.log("resultado: " + JSON.stringify(data));
           return response;
         },
         error => {

@@ -25,6 +25,7 @@ import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
 import { Camera } from '@ionic-native/camera';
 import { UploadfilePage } from '../pages/uploadfile/uploadfile';
+import { InvestigationsfilterPage } from '../pages/Investigationsfilter/investigationsfilter';
 
 import { AndroidPermissions } from '@ionic-native/android-permissions';
 
@@ -39,7 +40,8 @@ import { Geolocation } from '@ionic-native/geolocation'; */
     DescriptionPage,
     ContributionsPage,
     DetailsPage,
-    UploadfilePage
+    UploadfilePage,
+    InvestigationsfilterPage
   ],
   imports: [
     BrowserModule,
@@ -54,7 +56,8 @@ import { Geolocation } from '@ionic-native/geolocation'; */
     DescriptionPage,
     ContributionsPage,
     DetailsPage,
-    UploadfilePage
+    UploadfilePage,
+    InvestigationsfilterPage
   ],
   providers: [
     StatusBar,

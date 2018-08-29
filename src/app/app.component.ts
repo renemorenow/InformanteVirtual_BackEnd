@@ -7,13 +7,10 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { DescriptionPage } from '../pages/description/description';
 import { InvestigationsfilterPage } from '../pages/Investigationsfilter/investigationsfilter';
-//Details
 import { DetailsPage } from '../pages/details/details';
 
 import { timer } from 'rxjs/observable/timer';
 import { flatten } from '../../node_modules/@angular/compiler';
-
-
 
 @Component({
   templateUrl: 'app.html'
@@ -34,7 +31,7 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Inicio', component: HomePage },
-      { title: 'Categorias', component: ListPage },
+      { title: 'Categorias', component: InvestigationsfilterPage },
       { title: 'Departamento', component: InvestigationsfilterPage },
       { title: 'Municipio', component: InvestigationsfilterPage },
       { title: 'Salir', component: HomePage }

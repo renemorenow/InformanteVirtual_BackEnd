@@ -19,8 +19,8 @@
     <button ion-button (click)="uploadFile()">Adjuntar Archivo</button>
   </ion-item> -->
   <br/>
-  <button ion-button (click)="takePhoto()" full color="primary">Tomar Foto</button>
-  <button ion-button (click)="getImageTestCamera()" full color="secondary">Seleccionar Imágen</button>
-  <button ion-button (click)="cropImage()" full color="danger">Editar Imágen</button>
-  <button ion-button (click)="uploadImage()" full color="green">Subir Imágen</button>
+  <button ion-button round full (click)="takePhoto()" full color="Default"><ion-icon name="camera"></ion-icon>&nbsp;Tomar Foto</button>
+  <button ion-button round full (click)="getImageTestCamera()" full color="light"><ion-icon name="images"></ion-icon>&nbsp;Seleccionar Imágen</button>
+  <button ion-button round full (click)="cropImage()" full color="danger"><ion-icon name="brush"></ion-icon>&nbsp;Editar Imágen</button>
+  <button ion-button round full (click)="uploadImage()" full color="policia"><ion-icon name="cloud-upload"></ion-icon>&nbsp;Subir Imágen</button>
 </ion-content>
