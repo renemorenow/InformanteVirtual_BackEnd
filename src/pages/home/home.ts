@@ -1,28 +1,52 @@
 import { Component } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { DescriptionPage } from '../description/description';
 import { PlistarcasosProvider } from '../../providers/plistarcasos/plistarcasos';
 import { Subscriber } from '../../../node_modules/rxjs/Subscriber';
 
-//Pagina details:
+import { Http, Response } from '@angular/http';
+import { Headers, RequestOptions } from '@angular/http';
+
 import { DetailsPage } from '../details/details';
+import { Observable } from 'rxjs/Observable';
+
+import { injectViewContainerRef } from '@angular/core/src/render3';
+
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/first';
+import 'rxjs/add/operator/catch';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 
+@Injectable()
 export class HomePage {
   casos;
   idCaso;
   idCrimen;
   p_State;
   p_City;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public provedor:PlistarcasosProvider) {
+
+  private options;
+
+  constructor(
+              public navCtrl: NavController,
+              public navParams: NavParams,
+              public provedor: PlistarcasosProvider
+              // private http: Http
+              ) {
+    // let token = localStorage.getItem('token');
+    // let headers = new Headers({
+    //   'Content-Type':'application/json',
+    //   'Authorization':'Bearer ' + token
+    // });
     this.idCrimen = navParams.get("idCrimen");
     this.p_State = navParams.get("p_State");
     this.p_City = navParams.get("p_City");
   }
+
   ionViewDidLoad(){
     /* this.provedor.GetInvestigationsWithFile( )
     .subscribe(

@@ -4,15 +4,22 @@ import { CompileTemplateMetadata } from "@angular/compiler";
 
 @Injectable()
 export class PlistarcasosProvider {
-  urlBaseService
+  urlBaseService;
+  token;
+  private options;
 
   constructor(public http: HttpClient) {
     //this.urlBaseService = 'https://apiadenunciarrnmc.policia.gov.co/wsInformante';
     this.urlBaseService = 'https://catalogoservicioweb.policia.gov.co/wsInformante';
+    this.token = localStorage.getItem('token');
+    let headers = new Headers({
+      'Content-Type':'application/json',
+      'Authorization':'Bearer ' + this.token
+    });
   }
 
   GetInvestigations() {
-    return this.http.get(this.urlBaseService + "/api/Investigaciones/Investigations");
+    return this.http.get(this.urlBaseService + "/api/Investigaciones/Investigations", this.options);
   }
 
   GetInvestigationsFilter(Id, p_State, p_City) {

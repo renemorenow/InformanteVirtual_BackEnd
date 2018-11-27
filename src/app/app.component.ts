@@ -3,11 +3,9 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { LoginComponent } from '../app/login/login.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
-import { DescriptionPage } from '../pages/description/description';
 import { InvestigationsfilterPage } from '../pages/Investigationsfilter/investigationsfilter';
-import { DetailsPage } from '../pages/details/details';
 
 import { timer } from 'rxjs/observable/timer';
 import { flatten } from '../../node_modules/@angular/compiler';
@@ -19,7 +17,8 @@ import { flatten } from '../../node_modules/@angular/compiler';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = LoginComponent;
+  // rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -28,8 +27,8 @@ export class MyApp {
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
    
-    // used for an example of ngFor and navigation
     this.pages = [
+      { title: 'Login', component: LoginComponent },
       { title: 'Inicio', component: HomePage },
       { title: 'Categorias', component: InvestigationsfilterPage },
       { title: 'Departamento', component: InvestigationsfilterPage },
@@ -42,8 +41,6 @@ export class MyApp {
   initializeApp() {
     //debugger;
     this.platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       timer (2000).subscribe(()=> this.showSplash = false);

@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
         }
 
         goPagina(){
-            let link = ['/pagina'];
+            let link = ['./pages/home/home.html'];
             this.router.navigate(link);
         }
 }

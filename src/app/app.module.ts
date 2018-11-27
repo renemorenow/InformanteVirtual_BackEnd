@@ -3,12 +3,11 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
+import { LoginComponent } from '../app/login/login.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { DescriptionPage } from '../pages/description/description';
 import { ContributionsPage } from '../pages/contributions/contributions';
-
-//Details
 import { DetailsPage } from '../pages/details/details';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -35,6 +34,7 @@ import { Geolocation } from '@ionic-native/geolocation'; */
 @NgModule({
   declarations: [
     MyApp,
+    LoginComponent,
     HomePage,
     ListPage,
     DescriptionPage,
@@ -51,6 +51,7 @@ import { Geolocation } from '@ionic-native/geolocation'; */
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    LoginComponent,
     HomePage,
     ListPage,
     DescriptionPage,

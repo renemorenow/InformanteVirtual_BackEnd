@@ -4,16 +4,13 @@
   </div>
   <div class="card-block">
     <form novalidate [FormGroup]="form">
+    <!-- <form novalidate > -->
+
       <div class="form-group">
         <label for="user">Usuario:</label>
-        <imput
-          type="text"
-          class="form-control"
-          id="user"
-          [formGroupName]="user"
-        ></imput>
-        <div **ngIf="form.controls.user.errors && form.controls.user.touched">
-          <div class="alert alert-danger" **ngIf="form.controls.user.required">
+        <input type="text" class="form-control" id="user" formControlName="user">
+        <div *ngIf="form.controls.user.errors && form.controls.user.touched">
+          <div class="alert alert-danger" *ngIf="form.controls.user.errors.required">
             El usuario es requerido
           </div>
         </div>
@@ -21,20 +18,15 @@
 
       <div class="form-group">
         <label for="user">Usuario:</label>
-        <imput
-          type="text"
-          class="form-control"
-          id="pass"
-          [formGroupName]="pass"
-        ></imput>
-        <div **ngIf="form.controls.pass.errors && form.controls.pass.touched">
-          <div class="alert alert-danger" **ngIf="form.controls.user.required">
+        <input type="text" class="form-control" id="pass" formControlName="pass">
+        <div *ngIf="form.controls.pass.errors && form.controls.pass.touched">
+          <div class="alert alert-danger" *ngIf="form.controls.pass.errors.required">
             El password es requerido
           </div>
         </div>
       </div>
 
-      <div class="alert alert-danger" **ngIf="error">
+      <div class="alert alert-danger" *ngIf="error">
         Usuario o Password incorrrectos
       </div>
 
